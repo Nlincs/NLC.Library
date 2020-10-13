@@ -1,0 +1,20 @@
+# Sadly abandoned, this doesn't integrate well with Github in that we can't see build/test progress
+# otherwise it would be the preferred option for windows builds
+# image: Windows Server 2019
+# branches:
+#   only:
+#     - master
+#     - develop
+# environment:
+#   DOTNET_CLI_TELEMETRY_OPTOUT: 1
+#   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
+# version: '#{build}'
+# skip_non_tags: true
+# configuration: Release
+# platform:
+# - Any CPU
+# before_build:
+#   - dotnet restore
+# build:
+#   project: NLC.Library.sln
+#   verbosity: minimal
