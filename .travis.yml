@@ -1,0 +1,23 @@
+language: csharp
+# solution is optional and results in a restore
+solution: NLC.Library.sln
+# mono only needed for paket
+mono: latest
+# attempt to use linux and mac
+os:
+  - linux
+  - osx
+# not sure if this is needed
+osx_image: latest
+# dotnet version can be more specific but that is handled by global.json
+# specific version of sdk to prevent mac issues
+dotnet: 3.1.301
+
+before_install:
+  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew update          ; fi
+  
+# needed for tests
+# dotnet: 2.1
+script:
+ - dotnet build src/NLC.Library.csproj -c Release
+ - dotnet test tests/NLC.Library.tests.csproj -c Release

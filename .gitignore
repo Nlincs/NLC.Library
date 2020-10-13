@@ -1,0 +1,91 @@
+# Ignore file for Visual Studio 2008
+
+# use glob syntax
+syntax: glob
+
+# Ignore Visual Studio 2008 files
+*.obj
+*.exe
+*.pdb
+*.user
+*.aps
+*.pch
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+NLCWS2hg.suo
+*.orig
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.ilk
+*.log
+*.lib
+*.sbr
+*.scc
+[Bb]in
+[Dd]ebug*/
+obj/
+[Rr]elease*/
+_ReSharper*/
+[Tt]est[Rr]esult*
+[Bb]uild[Ll]og.*
+*.[Pp]ublish.xml
+re:^NLCWS2hg\NLC_SOAv2hg\BusinessLogic\Misc\GenericEnums\.vb$
+re:^NLCWS2hg\NLC_SOAv2hg\NLC\DL2\SOAPTrace\.vb-dd27337a$
+re:^NLCWS2hg\Documentation*
+*.dbmdl
+.idea/
+*.DS_Store
+*.vs10x
+*~AutoRecover.*
+packages/*
+Visualizers/*
+# files added for admin gui
+*.png
+*.ico
+*.old
+*nCrunchTemp*
+*StyleCop.Cache
+*.localhistory*
+*.rej
+*.patch
+NLCWS2hg/.vs/NLCWS2hg/v15/sqlite3/storage.ide
+*/v15/Server/*
+*/v15/sqlite3/*
+*/AFLookup.DBUnitTests/*
+*DBUnitTests*
+*/SOA error logs/*
+*/SOAAdmin/*
+*/SOAPTrace/*
+*/Small Systems DB/*
+*/Encryption/*
+NLCWS2hg/NLC.MiniServices/Interfaces/Config/README.txt
+*/.vs/*
+*.pubxml.user
+*.pubxml.user.rej
+NLCWS2hg/_NCrunch_NLCWS2hg/StoredText/f0ccb0d263a2477fb64ceb93de518914
+NLCWS2hg/UpgradeLog.htm
+NLCWS2hg/_NCrunch_*
+NLCWS2hg/DependencyValidation1/DependencyValidation1*
+# NuGet Packages
+*.nupkg
+# The packages folder can be ignored because of Package Restore
+**/packages/*
+# except build/, which is used as an MSBuild target.
+!**/packages/build/
+# Uncomment if necessary however generally it will be regenerated when needed
+#!**/packages/repositories.config
+NLCWS2hg/packages
+NLCWS2hg/_NCrunch_NLCWS2hg
+
+
+NLCWS2hg/NLC_SOAv2hg/requestlogs
+NLCWS2hg/NLC_SOAv2hg/logs/.vscode
+*.dt
+NLCWS2hg/Devtracker.Dump
+NLCWS2hg/NLC_SOAv2hg/packages.config.new.20200513172656
+.vs/NLC.Library/DesignTimeBuild

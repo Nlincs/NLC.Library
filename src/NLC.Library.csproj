@@ -1,0 +1,59 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <Authors>S Ellwood</Authors>
+        <Company>NLC</Company>
+        <Description>
+            NLC code library
+            Consists of generic functions and specific models for use in local government, particularly in the UK.
+        </Description>
+        <Copyright>NLC 2020</Copyright>
+        <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+        <Version>0.1.0</Version>
+        <PackageReleaseNotes>
+            0.1 First open source version. MIT Licence. This is a major refactoring from earlier versions
+        </PackageReleaseNotes>
+        <RepositoryType>Git</RepositoryType>
+        <!--from https://blog.magnusmontin.net/2018/11/05/platform-conditional-compilation-in-net-core/ -->
+        <IsWindows Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">
+            true
+        </IsWindows>
+        <IsOSX Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">
+            true
+        </IsOSX>
+        <IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">
+            true
+        </IsLinux>
+        <RepositoryUrl>https://github.com/Nlincs/NLC.Library</RepositoryUrl>
+        <PackageIcon>cropped-NLC-browser-logo-icon-512x512-2-32x32.png</PackageIcon>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(IsWindows)'=='true'">
+        <DefineConstants>Windows</DefineConstants>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(IsOSX)'=='true'">
+        <DefineConstants>OSX</DefineConstants>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(IsLinux)'=='true'">
+        <DefineConstants>Linux</DefineConstants>
+    </PropertyGroup>
+    <ItemGroup>
+      <Compile Remove="Extensions\FileInfoExtensions.cs" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="..\assets\cropped-NLC-browser-logo-icon-512x512-2-32x32.png">
+          <Pack>True</Pack>
+          <PackagePath></PackagePath>
+        </None>
+        <None Include="..\LICENSE.txt">
+            <Pack>True</Pack>
+            <PackagePath></PackagePath>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="libphonenumber-csharp" Version="8.12.11" />
+        <PackageReference Include="ServiceStack.Text" Version="5.9.2" />
+    </ItemGroup>
+
+</Project>

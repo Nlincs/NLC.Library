@@ -1,0 +1,375 @@
+//  --------------------------------------------------------------------------------------------------------------------
+//  <copyright file=AddressBase.cs company="North Lincolnshire Council">
+//  Solution : -  NLC.Library
+// 
+//  </copyright>
+//  <summary>
+// 
+//  Created - 13/10/2020 16:36
+//  Altered - 16/10/2020 12:10 - Stephen Ellwood
+// 
+//  Project : - NLC.Library
+// 
+//  </summary>
+//  --------------------------------------------------------------------------------------------------------------------
+
+using NLC.Library.Extensions;
+using NLC.Library.Interfaces;
+
+namespace NLC.Library
+    {
+        /// <summary>
+        ///     Address base class
+        /// </summary>
+        public abstract class AddressBase : ILocation
+            {
+                protected AddressBase(IAddressLines address)
+                    {
+                        OriginalAddress = address;
+
+                        Address1 = address.AddressLine1;
+                        Address2 = address.AddressLine2;
+                        Address3 = address.AddressLine3;
+                        Address4 = address.AddressLine4;
+                        Address5 = address.AddressLine5;
+                        Address6 = address.AddressLine6;
+                    }
+
+                protected AddressBase(IAddressNameNumber address)
+                    {
+                        OriginalAddress = address;
+
+                        Address1 = address.HouseName;
+                        Address2 = address.HouseNumber;
+                        Address3 = address.Street;
+                        Address4 = address.Location;
+                        Address5 = address.Town;
+                        Address6 = address.County;
+                    }
+
+                protected AddressBase(IAddressNamed address)
+                    {
+                        OriginalAddress = address;
+
+                        Address1 = address.PrimaryAddress;
+                        Address2 = address.SecondaryAddress;
+                        Address3 = address.Street;
+                        Address4 = address.Location;
+                        Address5 = address.Town;
+                        Address6 = address.County;
+                    }
+
+                protected AddressBase()
+                    {
+                    }
+
+                /// <summary>
+                ///     Original address at creation of instance
+                /// </summary>
+                /// <remarks>
+                ///     Sometimes needed when rearranging
+                /// </remarks>
+                protected IAddress OriginalAddress { get; set; }
+
+
+                /// <summary>
+                /// </summary>
+                /// <returns></returns>
+                public virtual string FullAddress() =>
+                    FullAddress(Address1, Address2, Address3, Address4, Address5, Address6);
+
+                /// <inheritdoc />
+                public virtual string FullAddress(IAddress address) =>
+                    FullAddress(address.Address1, address.Address2, address.Address3, address.Address4,
+                        address.Address5, address.Address6);
+
+
+                /// <summary>
+                /// </summary>
+                /// <param name="line1"></param>
+                /// <param name="line2"></param>
+                /// <param name="line3"></param>
+                /// <param name="line4"></param>
+                /// <param name="line5"></param>
+                /// <param name="line6"></param>
+                /// <returns></returns>
+                public string FullAddress(string line1, string line2, string line3, string line4,
+                    string line5, string line6)
+                    {
+                        if (line1 == null) { line1 = ""; }
+
+                        if (line2 == null)
+                            {
+                                line2 = "";
+                            }
+
+                        if (line3 == null)
+                            {
+                                line3 = "";
+                            }
+
+                        if (line4 == null)
+                            {
+                                line4 = "";
+                            }
+
+                        if (line5 == null)
+                            {
+                                line5 = "";
+                            }
+
+                        if (line6 == null)
+                            {
+                                line6 = "";
+                            }
+
+                        var pAdd = line1.Trim();
+                        var sAdd = line2.Trim();
+                        var str = line3.Trim();
+                        var loc = line4.Trim();
+                        var town = line5.Trim();
+                        var county = line6.Trim();
+
+
+                        var result = pAdd;
+
+                        if (result == "")
+                            {
+                                result = sAdd;
+                            }
+                        else
+                            {
+                                if (sAdd != "")
+                                    {
+                                        result = result + ", " + sAdd;
+                                    }
+                            }
+
+                        if (result == "")
+                            {
+                                result = str;
+                            }
+                        else
+                            {
+                                if (str != "")
+                                    {
+                                        result = result + ", " + str;
+                                    }
+                            }
+
+
+                        if (result == "")
+                            {
+                                result = loc;
+                            }
+                        else
+                            {
+                                if (loc != "")
+                                    {
+                                        result = result + ", " + loc;
+                                    }
+                            }
+
+                        if (result == "")
+                            {
+                                result = town;
+                            }
+                        else
+                            {
+                                if (town != "")
+                                    {
+                                        result = result + ", " + town;
+                                    }
+                            }
+
+                        if (result == "")
+                            {
+                                result = county;
+                            }
+                        else
+                            {
+                                if (county != "")
+                                    {
+                                        result = result + ", " + county;
+                                    }
+                            }
+
+                        if (result == "")
+                            {
+                                if (PostCode != null && PostCode.IsUkValid())
+                                    {
+                                        result = PostCode.Value;
+                                    }
+                            }
+                        else
+                            {
+                                if (PostCode != null && PostCode.IsUkValid())
+                                    {
+                                        result = result + " " + PostCode.Value;
+                                    }
+                            }
+
+                        return result;
+                    }
+
+                /// <inheritdoc />
+                public virtual bool IsEmptyAddress() => FullAddress() == "";
+
+                /// <inheritdoc />
+                public string AddressSortField { get; set; }
+
+
+                /// <inheritdoc />
+                public IUprn Uprn { get; set; }
+
+                /// <inheritdoc />
+                public IUsrn Usrn { get; set; }
+
+                public IPostCode PostCode { get; set; }
+
+                /// <inheritdoc />
+                public double? Easting { get; set; }
+
+                /// <inheritdoc />
+                public double? Northing { get; set; }
+
+
+                /// <summary>
+                ///     Restore original address
+                /// </summary>
+                public void Restore()
+                    {
+                        Address1 = OriginalAddress.Address1;
+                        Address2 = OriginalAddress.Address2;
+                        Address3 = OriginalAddress.Address3;
+                        Address4 = OriginalAddress.Address4;
+                        Address5 = OriginalAddress.Address5;
+                        Address6 = OriginalAddress.Address6;
+                    }
+
+
+                /// <summary>
+                /// </summary>
+                /// <returns></returns>
+                public bool IsValid() => FullAddress().Trim() == "" && (Uprn == null || !Uprn.IsValid());
+
+                /// <summary>
+                ///     Simplify address
+                /// </summary>
+                /// <remarks>
+                ///     This basically is intended to remove empty lines from the address fields and push the remainder up.
+                ///     It can mess up the consistency for named fields but that is always a risk with user input
+                /// </remarks>
+                public void Simplify()
+                    {
+                        // first tidy up
+                        Address1 = Address1.Trim();
+                        Address2 = Address2.Trim();
+                        Address3 = Address3.Trim();
+                        Address4 = Address4.Trim();
+                        Address5 = Address5.Trim();
+                        Address6 = Address6.Trim();
+
+                        var tempFullAddress = FullAddress(Address1, Address2, Address3, Address4, Address5, Address6);
+
+                        // remove any redundancy so that we have a comma seperated string
+                        tempFullAddress.ReplaceAllMid(",,", "", 0, tempFullAddress.Length);
+
+                        // now split on comma
+                        var tempAddress = tempFullAddress.Split(',');
+
+                        var tempAddressLen = tempAddress.Length;
+
+                        switch (tempAddressLen)
+                            {
+                                case 1:
+                                    Address1 = tempAddress[0].Trim();
+                                    Address2 = "";
+                                    Address3 = "";
+                                    Address4 = "";
+                                    Address5 = "";
+                                    Address6 = "";
+                                    break;
+                                case 2:
+                                    Address1 = tempAddress[0].Trim();
+                                    Address2 = tempAddress[1].Trim();
+
+                                    Address3 = "";
+                                    Address4 = "";
+                                    Address5 = "";
+                                    Address6 = "";
+                                    break;
+
+                                case 3:
+                                    Address1 = tempAddress[0].Trim();
+                                    Address2 = tempAddress[1].Trim();
+                                    Address3 = tempAddress[2].Trim();
+                                    Address4 = "";
+                                    Address5 = "";
+                                    Address6 = "";
+                                    break;
+
+                                case 4:
+                                    Address1 = tempAddress[0].Trim();
+                                    Address2 = tempAddress[1].Trim();
+                                    Address3 = tempAddress[2].Trim();
+                                    Address4 = tempAddress[3].Trim();
+                                    Address5 = "";
+                                    Address6 = "";
+                                    break;
+
+
+                                case 5:
+                                    Address1 = tempAddress[0].Trim();
+                                    Address2 = tempAddress[1].Trim();
+                                    Address3 = tempAddress[2].Trim();
+                                    Address4 = tempAddress[3].Trim();
+                                    Address5 = tempAddress[4].Trim();
+                                    Address6 = "";
+
+                                    break;
+
+                                case 6:
+                                    Address1 = tempAddress[0].Trim();
+                                    Address2 = tempAddress[1].Trim();
+                                    Address3 = tempAddress[2].Trim();
+                                    Address4 = tempAddress[3].Trim();
+                                    Address5 = tempAddress[4].Trim();
+                                    Address6 = tempAddress[5].Trim();
+
+                                    break;
+                                default:
+                                    Address1 = tempAddress[0].Trim();
+                                    Address2 = tempAddress[1].Trim();
+                                    Address3 = tempAddress[2].Trim();
+                                    Address4 = tempAddress[3].Trim();
+                                    Address5 = tempAddress[4].Trim();
+                                    Address6 = tempAddress[5].Trim();
+                                    break;
+                                    
+                            }
+                    }
+
+                #region Implementation of IAddress
+
+                /// <inheritdoc />
+                public string Address1 { get; set; } = "";
+
+                /// <inheritdoc />
+                public string Address2 { get; set; } = "";
+
+                /// <inheritdoc />
+                public string Address3 { get; set; } = "";
+
+                /// <inheritdoc />
+                public string Address4 { get; set; } = "";
+
+                /// <inheritdoc />
+                public string Address5 { get; set; } = "";
+
+                /// <inheritdoc />
+                public string Address6 { get; set; } = "";
+
+                #endregion
+            }
+    }
