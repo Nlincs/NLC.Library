@@ -22,8 +22,9 @@ namespace NLC.Library
         /// </summary>
         /// <remarks>
         ///     Location, including all address fields
+        ///     intended to be used as a less structured format for addressable locations
         /// </remarks>
-        public class Address : AddressBase, IAddressLines, IAddressNameNumber, IAddressNamed
+        public class Address : AddressBase, IAddressLines, IAddressNameNumber, IAddressNamed, IAddressLocation
             {
                 public Address()
                     {
