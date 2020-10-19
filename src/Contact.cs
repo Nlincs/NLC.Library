@@ -29,15 +29,15 @@ namespace NLC.Library
                     {
                     }
 
-                public Contact(ILocation address) => Address = address;
-
+                public Contact(IFullAddress address) => Address = address;
+        
                 #region Implementation of IFullContact
 
                 /// <inheritdoc />
                 public IPerson Person { get; set; }
 
                 /// <inheritdoc />
-                public ILocation Address { get; set; }
+                public IFullAddress Address { get; set; }
 
                 public bool IsAnonymous { get; set; }
 

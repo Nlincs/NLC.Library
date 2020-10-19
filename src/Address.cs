@@ -5,8 +5,8 @@
 //  </copyright>
 //  <summary>
 // 
-//  Created - 19/10/2020 12:27
-//  Altered - 19/10/2020 13:30 - Stephen Ellwood
+//  Created - 19/10/2020 14:17
+//  Altered - 19/10/2020 14:51 - Stephen Ellwood
 // 
 //  Project : - NLC.Library
 // 
@@ -24,7 +24,7 @@ namespace NLC.Library
         ///     Location, including all address fields
         ///     intended to be used as a less structured format for addressable locations
         /// </remarks>
-        public class Address : AddressBase, IAddressLines, IAddressNameNumber, IAddressNamed, IAddressLocation
+        public class Address : AddressBase, IFullAddress
             {
                 public Address()
                     {
