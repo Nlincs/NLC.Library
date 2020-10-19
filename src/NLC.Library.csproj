@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
@@ -10,8 +10,9 @@
         </Description>
         <Copyright>NLC 2020</Copyright>
         <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-        <Version>0.1.1.1</Version>
+        <Version>0.1.2</Version>
         <PackageReleaseNotes>
+            0.1.2 Address refactoring
             0.1.1.1 updated address object
             0.1.1 Added generic address that covers all options
             0.1 First open source version. MIT Licence. This is a major refactoring from earlier versions

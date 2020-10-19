@@ -58,7 +58,7 @@ namespace NLC.Library.Tests
                         var uprn = new Uprn("12345");
                         var usrn = new Usrn();
 
-                        var address = new AddressLines
+                        var address = new Address
                             {
                                 Address1 = address1,
                                 Address2 = address2,
@@ -97,7 +97,7 @@ namespace NLC.Library.Tests
 
                         Assert.That(deserialised.Address, Is.Not.Null.Or.Empty);
 
-                        var actualAddress = (IAddressLines)deserialised.Address;
+                        var actualAddress = deserialised.Address;
                         Assert.That(actualAddress.Address1, Is.EqualTo(address1));
                         Assert.That(actualAddress.Address2, Is.EqualTo(address2));
                         Assert.That(actualAddress.Address3, Is.EqualTo(address3));
@@ -139,12 +139,10 @@ namespace NLC.Library.Tests
 
                         var expected = primaryAddress + ", " + secondaryAddress + ", " + county;
 
-                        var sut = new Contact(address);
+                        var sut = new Contact(new Address(address));
 
                         var actual = sut.Address.FullAddress();
 
-
-                        Assert.That(sut.Address, Is.EqualTo(address));
                         Assert.That(actual, Is.EqualTo(expected));
                     }
 
@@ -162,11 +160,9 @@ namespace NLC.Library.Tests
 
                         var expected = primaryAddress + ", " + secondaryAddress + ", " + county;
 
-                        var sut = new Contact(address);
+                        var sut = new Contact(new Address(address));
                         var actual = sut.Address.FullAddress();
-
-
-                        Assert.That(sut.Address, Is.EqualTo(address));
+            
                         Assert.That(actual, Is.EqualTo(expected));
                     }
 
@@ -184,11 +180,9 @@ namespace NLC.Library.Tests
 
                         var expected = primaryAddress + ", " + secondaryAddress + ", " + county;
 
-                        var sut = new Contact(address);
+                        var sut = new Contact(new Address(address));
                         var actual = sut.Address.FullAddress();
 
-
-                        Assert.That(sut.Address, Is.EqualTo(address));
                         Assert.That(actual, Is.EqualTo(expected));
                     }
             }
