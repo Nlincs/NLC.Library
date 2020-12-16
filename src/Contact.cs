@@ -1,14 +1,14 @@
 //  --------------------------------------------------------------------------------------------------------------------
 //  <copyright file=Contact.cs company="North Lincolnshire Council">
-//  Solution : -  Library
+//  Solution : -  NLC.Library
 // 
 //  </copyright>
 //  <summary>
 // 
-//  Created - 08/07/2020 11:33
-//  Altered - 12/10/2020 12:25 - Stephen Ellwood
+//  Created - 19/10/2020 15:10
+//  Altered - 16/12/2020 15:09 - Stephen Ellwood
 // 
-//  Project : - Library
+//  Project : - NLC.Library
 // 
 //  </summary>
 //  --------------------------------------------------------------------------------------------------------------------
@@ -30,7 +30,7 @@ namespace NLC.Library
                     }
 
                 public Contact(IFullAddress address) => Address = address;
-        
+
                 #region Implementation of IFullContact
 
                 /// <inheritdoc />

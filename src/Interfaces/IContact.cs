@@ -28,7 +28,7 @@ namespace NLC.Library.Interfaces
                 /// <summary>
                 ///     Address detail, this includes things like uprn, usrn, full address etc
                 /// </summary>
-                IFullAddress Address { get; set; }
+                Library.IFullAddress Address { get; set; }
 
                 /// <summary>
                 ///     Has the contact requested anonymity
