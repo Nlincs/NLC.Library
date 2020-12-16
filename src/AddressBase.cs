@@ -5,8 +5,8 @@
 //  </copyright>
 //  <summary>
 // 
-//  Created - 13/10/2020 16:36
-//  Altered - 16/10/2020 12:10 - Stephen Ellwood
+//  Created - 19/10/2020 09:51
+//  Altered - 16/12/2020 14:49 - Stephen Ellwood
 // 
 //  Project : - NLC.Library
 // 
@@ -83,6 +83,30 @@ namespace NLC.Library
                     FullAddress(address.Address1, address.Address2, address.Address3, address.Address4,
                         address.Address5, address.Address6);
 
+                public string FullAddress(string line1, string line2, string line3, string line4,
+                    string line5, string line6) => FullAddress(line1, line2, line3, line4, line5, line6, true);
+
+                /// <inheritdoc />
+                public virtual bool IsEmptyAddress() => FullAddress() == "";
+
+                /// <inheritdoc />
+                public string AddressSortField { get; set; }
+
+
+                /// <inheritdoc />
+                public IUprn Uprn { get; set; }
+
+                /// <inheritdoc />
+                public IUsrn Usrn { get; set; }
+
+                public IPostCode PostCode { get; set; }
+
+                /// <inheritdoc />
+                public double? Easting { get; set; }
+
+                /// <inheritdoc />
+                public double? Northing { get; set; }
+
 
                 /// <summary>
                 /// </summary>
@@ -92,9 +116,10 @@ namespace NLC.Library
                 /// <param name="line4"></param>
                 /// <param name="line5"></param>
                 /// <param name="line6"></param>
+                /// <param name="includePostCode">false to not include postcode in full address, true (default) otherwise</param>
                 /// <returns></returns>
                 public string FullAddress(string line1, string line2, string line3, string line4,
-                    string line5, string line6)
+                    string line5, string line6, bool includePostCode)
                     {
                         if (line1 == null) { line1 = ""; }
 
@@ -194,44 +219,27 @@ namespace NLC.Library
                                     }
                             }
 
-                        if (result == "")
+
+                        if (includePostCode)
                             {
-                                if (PostCode != null && PostCode.IsUkValid())
+                                if (result == "")
                                     {
-                                        result = PostCode.Value;
+                                        if (PostCode != null && PostCode.IsUkValid())
+                                            {
+                                                result = PostCode.Value;
+                                            }
                                     }
-                            }
-                        else
-                            {
-                                if (PostCode != null && PostCode.IsUkValid())
+                                else
                                     {
-                                        result = result + " " + PostCode.Value;
+                                        if (PostCode != null && PostCode.IsUkValid())
+                                            {
+                                                result = result + " " + PostCode.Value;
+                                            }
                                     }
                             }
 
                         return result;
                     }
-
-                /// <inheritdoc />
-                public virtual bool IsEmptyAddress() => FullAddress() == "";
-
-                /// <inheritdoc />
-                public string AddressSortField { get; set; }
-
-
-                /// <inheritdoc />
-                public IUprn Uprn { get; set; }
-
-                /// <inheritdoc />
-                public IUsrn Usrn { get; set; }
-
-                public IPostCode PostCode { get; set; }
-
-                /// <inheritdoc />
-                public double? Easting { get; set; }
-
-                /// <inheritdoc />
-                public double? Northing { get; set; }
 
 
                 /// <summary>
@@ -259,6 +267,7 @@ namespace NLC.Library
                 /// <remarks>
                 ///     This basically is intended to remove empty lines from the address fields and push the remainder up.
                 ///     It can mess up the consistency for named fields but that is always a risk with user input
+                ///     Postcode is ignored - previously it may have been added to the last line
                 /// </remarks>
                 public void Simplify()
                     {
@@ -270,9 +279,9 @@ namespace NLC.Library
                         Address5 = Address5.Trim();
                         Address6 = Address6.Trim();
 
-                        var tempFullAddress = FullAddress(Address1, Address2, Address3, Address4, Address5, Address6);
+                        var tempFullAddress = FullAddress(Address1, Address2, Address3, Address4, Address5, Address6, false);
 
-                        // remove any redundancy so that we have a comma seperated string
+                        // remove any redundancy so that we have a comma separated string
                         tempFullAddress.ReplaceAllMid(",,", "", 0, tempFullAddress.Length);
 
                         // now split on comma
@@ -346,7 +355,6 @@ namespace NLC.Library
                                     Address5 = tempAddress[4].Trim();
                                     Address6 = tempAddress[5].Trim();
                                     break;
-                                    
                             }
                     }
 
