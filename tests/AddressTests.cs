@@ -45,6 +45,7 @@ namespace NLC.Library.Tests
                         Assert.IsInstanceOf<ILocation>(sut);
                         Assert.IsInstanceOf<IFullAddress>(sut);
                         Assert.IsInstanceOf<IAddressLocation>(sut);
+
                     }
 
                 [Test]
