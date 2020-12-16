@@ -5,8 +5,8 @@
 //  </copyright>
 //  <summary>
 // 
-//  Created - 13/10/2020 16:38
-//  Altered - 19/10/2020 13:41 - Stephen Ellwood
+//  Created - 19/10/2020 15:10
+//  Altered - 16/12/2020 14:37 - Stephen Ellwood
 // 
 //  Project : - NLC.Library.Tests
 // 
@@ -45,7 +45,6 @@ namespace NLC.Library.Tests
                         Assert.IsInstanceOf<ILocation>(sut);
                         Assert.IsInstanceOf<IFullAddress>(sut);
                         Assert.IsInstanceOf<IAddressLocation>(sut);
-                     
                     }
 
                 [Test]
@@ -105,6 +104,25 @@ namespace NLC.Library.Tests
 
                         Assert.That(sut.HouseName, Is.EqualTo("add1"));
                         Assert.That(sut.HouseNumber, Is.EqualTo("add2"));
+                    }
+
+                [Test]
+                public void Simplify_IgnoresPostCode()
+                    {
+                        var address2 = "address2";
+                        var address4 = "Address4";
+                        var postCode = new PostCode("TN1 2BE");
+
+                        var sut = new Address {Address2 = address2, Address4 = address4, PostCode = postCode};
+
+                        var expected = new Address {Address1 = address2, Address2 = address4};
+
+                        sut.Simplify();
+
+                        Assert.That(sut, Is.Not.Null);
+                        Assert.That(sut.AddressLine1, Is.EqualTo(expected.AddressLine1));
+                        Assert.That(sut.AddressLine2, Is.EqualTo(expected.AddressLine2));
+                 
                     }
             }
     }
