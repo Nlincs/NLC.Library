@@ -6,7 +6,7 @@
 //  <summary>
 // 
 //  Created - 13/10/2020 16:38
-//  Altered - 16/10/2020 14:06 - Stephen Ellwood
+//  Altered - 16/12/2020 16:02 - Stephen Ellwood
 // 
 //  Project : - NLC.Library.Tests
 // 
@@ -51,7 +51,6 @@ namespace NLC.Library.Tests
                 [Test]
                 public void NullInputReturnsEmptyPhoneNumber()
                     {
-                   
                         var actual = new TelephoneNumber(null);
 
                         Assert.That(actual, Is.Not.Null);
@@ -71,6 +70,34 @@ namespace NLC.Library.Tests
                         var actual = simpleTel.Value;
 
                         Assert.That(actual, Is.EqualTo(expectedNumber));
+                    }
+
+                [Test]
+                public void SimpleNumber_withLeading0_ReturnsExpected()
+                    {
+                        var number = "012345 5789";
+                        var expectedNumber = "0123455789";
+
+
+                        var simpleTel = new TelephoneNumber(number);
+
+                        var actual = simpleTel.Value;
+
+                        Assert.That(actual, Is.EqualTo(expectedNumber));
+                    }
+
+                [Test]
+                public void SimpleNumber_IsValid_ReturnsExpected()
+                    {
+                        var number = "01244 521 386";
+                        var expectedResult = true;
+
+
+                        var simpleTel = new TelephoneNumber(number);
+
+                        var actual = simpleTel.IsValid;
+
+                        Assert.That(actual, Is.EqualTo(expectedResult));
                     }
 
 

@@ -60,9 +60,9 @@ namespace NLC.Library.Tests
                 [Test]
                 public void SimpleNumberReturnsExpected()
                     {
-                        var number = "12345 5789";
+                        var number = "012345 5789";
 
-                        var expectedNumber = "123455789";
+                        var expectedNumber = "0123455789";
 
                         var simpleTel = new TelephoneNumber {Value = number};
 

@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
@@ -10,8 +10,9 @@
         </Description>
         <Copyright>NLC 2020</Copyright>
         <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-        <Version>0.1.3</Version>
+        <Version>0.1.4</Version>
         <PackageReleaseNotes>
+            0.1.4 fixed issue with leading 0 being stripped
             0.1.3 Fixed issue with postcode being included in Address simplify operation
             0.1.2 Address refactoring
             0.1.1.1 updated address object
@@ -56,7 +57,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="libphonenumber-csharp" Version="8.12.13" />
+        <PackageReference Include="libphonenumber-csharp" Version="8.12.14" />
         <PackageReference Include="ServiceStack.Text" Version="5.10.2" />
     </ItemGroup>
 
