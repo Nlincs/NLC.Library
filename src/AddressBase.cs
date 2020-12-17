@@ -77,6 +77,17 @@ namespace NLC.Library
                         _address6 = address6;
                     }
 
+                protected AddressBase()
+                    {
+                        var defaultAddress = "";
+                        Address1 = defaultAddress;
+                        Address2 = defaultAddress;
+                        Address3 = defaultAddress;
+                        Address4 = defaultAddress;
+                        Address5 = defaultAddress;
+                        Address6 = defaultAddress;
+        }
+
 
                 /// <summary>
                 ///     Original address at creation of instance
