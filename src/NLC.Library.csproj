@@ -10,8 +10,9 @@
         </Description>
         <Copyright>NLC 2020</Copyright>
         <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-        <Version>0.1.4</Version>
+        <Version>0.1.5</Version>
         <PackageReleaseNotes>
+            0.1.5 updated Address Simplify to handle house name/number better 
             0.1.4 fixed issue with leading 0 being stripped
             0.1.3 Fixed issue with postcode being included in Address simplify operation
             0.1.2 Address refactoring

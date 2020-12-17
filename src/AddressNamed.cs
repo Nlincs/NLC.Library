@@ -21,11 +21,17 @@ namespace NLC.Library
         /// </summary>
         public sealed class AddressNamed : AddressBase, IAddressNamed
             {
-                public AddressNamed()
-                    {
-                    }
+        public AddressNamed(string PrimaryAddress, string SecondaryAddress, string Street, string Location, string Town, string County):base(PrimaryAddress, SecondaryAddress, Street, Location, Town, County)
+            {
+                Address1 = PrimaryAddress;
+                Address2 = SecondaryAddress;
+                Address3 = Street;
+                Address4 = Location;
+                Address5 = Town;
+                Address6 = County;
+            }
 
-                public AddressNamed(IAddressLines address) : base(address)
+        public AddressNamed(IAddressLines address) : base(address)
                     {
                     }
 

@@ -1,14 +1,14 @@
 //  --------------------------------------------------------------------------------------------------------------------
 //  <copyright file=ContactTests.cs company="North Lincolnshire Council">
-//  Solution : -  Library
+//  Solution : -  NLC.Library
 // 
 //  </copyright>
 //  <summary>
 // 
-//  Created - 08/07/2020 11:33
-//  Altered - 12/10/2020 12:34 - Stephen Ellwood
+//  Created - 19/10/2020 15:10
+//  Altered - 17/12/2020 09:51 - Stephen Ellwood
 // 
-//  Project : - Library.tests
+//  Project : - NLC.Library.Tests
 // 
 //  </summary>
 //  --------------------------------------------------------------------------------------------------------------------
@@ -24,19 +24,14 @@ namespace NLC.Library.Tests
         public class ContactTests
             {
                 [SetUp]
-                public void SetUp()
-                    {
-
-                        _mockRepository = new MockRepository(MockBehavior.Strict);
-                     
-                    }
+                public void SetUp() => _mockRepository = new MockRepository(MockBehavior.Strict);
 
 
                 [TearDown]
                 public void TearDown() => _mockRepository.VerifyAll();
 
                 private MockRepository _mockRepository;
-            
+
 
                 private Contact CreateSimpleContact() => new Contact();
 
@@ -58,18 +53,12 @@ namespace NLC.Library.Tests
                         var uprn = new Uprn("12345");
                         var usrn = new Usrn();
 
-                        var address = new Address
+                        var address = new Address(address1, address2, address3, address4, address5, null)
                             {
-                                Address1 = address1,
-                                Address2 = address2,
-                                Address3 = address3,
-                                Address4 = address4,
-                                Address5 = address5,
-                                Uprn = uprn,
-                                Usrn = usrn
+                                Uprn = uprn, Usrn = usrn
                             };
 
-                        var mobile =  new TelephoneNumber("123");
+                        var mobile = new TelephoneNumber("123");
                         var preferred = new TelephoneNumber("789");
 
                         var sut = new Contact
@@ -130,12 +119,7 @@ namespace NLC.Library.Tests
                         var secondaryAddress = "2";
                         var county = "county";
 
-                        var address = new AddressNamed
-                            {
-                                PrimaryAddress = primaryAddress,
-                                SecondaryAddress = secondaryAddress,
-                                County = county
-                            };
+                        var address = new AddressNamed(primaryAddress,secondaryAddress,null,null,null,county);
 
                         var expected = primaryAddress + ", " + secondaryAddress + ", " + county;
 
@@ -153,16 +137,13 @@ namespace NLC.Library.Tests
                         var secondaryAddress = "2";
                         var county = "county";
 
-                        var address = new AddressLines
-                            {
-                                Address1 = primaryAddress, Address2 = secondaryAddress, Address4 = county
-                            };
+                        var address = new AddressLines(primaryAddress, secondaryAddress, null, null, null, county);
 
-                        var expected = primaryAddress + ", " + secondaryAddress + ", " + county;
+            var expected = primaryAddress + ", " + secondaryAddress + ", " + county;
 
                         var sut = new Contact(new Address(address));
                         var actual = sut.Address.FullAddress();
-            
+
                         Assert.That(actual, Is.EqualTo(expected));
                     }
 
@@ -173,12 +154,9 @@ namespace NLC.Library.Tests
                         var secondaryAddress = "2";
                         var county = "county";
 
-                        var address = new AddressNameNumber
-                            {
-                                HouseName = primaryAddress, HouseNumber = secondaryAddress, County = county
-                            };
+                        var address = new AddressNameNumber(primaryAddress, secondaryAddress, null, null, null, county);
 
-                        var expected = primaryAddress + ", " + secondaryAddress + ", " + county;
+            var expected = primaryAddress + ", " + secondaryAddress + ", " + county;
 
                         var sut = new Contact(new Address(address));
                         var actual = sut.Address.FullAddress();

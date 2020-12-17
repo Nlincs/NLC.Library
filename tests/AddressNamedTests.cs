@@ -6,7 +6,7 @@
 //  <summary>
 // 
 //  Created - 13/10/2020 16:38
-//  Altered - 16/10/2020 11:43 - Stephen Ellwood
+//  Altered - 17/12/2020 09:54 - Stephen Ellwood
 // 
 //  Project : - NLC.Library.Tests
 // 
@@ -30,7 +30,7 @@ namespace NLC.Library.Tests
 
                 private MockRepository _mockRepository;
 
-                private AddressNamed CreateSimpleAddress() => new AddressNamed();
+                private AddressNamed CreateSimpleAddress() => new AddressNamed(null, null, null, null, null, null);
 
                 [Test]
                 public void CheckInterfaces()
@@ -147,7 +147,7 @@ namespace NLC.Library.Tests
 
                         Assert.That(sut1, Is.Not.EqualTo(sut2));
                     }
-        
+
                 [Test]
                 public void NonNullAddressIsNotEmptyCheck()
                     {
@@ -290,15 +290,7 @@ namespace NLC.Library.Tests
                 [Test]
                 public void AddressLinesConstructor_ExpectedResults()
                     {
-                        var address = new AddressNameNumber
-                            {
-                                HouseName = "add1",
-                                HouseNumber = "add2",
-                                Street = "add3",
-                                Location = "add4",
-                                Town = "add5",
-                                County = "add6"
-                            };
+                        var address = new AddressNameNumber("add1", "add2", "add3", "add4", "add5", "add6");
 
                         var actual = new AddressNamed(address);
 

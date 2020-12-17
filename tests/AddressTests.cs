@@ -24,17 +24,9 @@ namespace NLC.Library.Tests
         [TestFixture]
         public class AddressTests
             {
-                private Address CreateAddress() => new Address();
+                private Address CreateAddress() => new Address(null,null,null,null,null,null);
 
-                private Address PopulatedAddress() => new Address
-                    {
-                        Address1 = "add1",
-                        Address2 = "add2",
-                        Address3 = "add3",
-                        Address4 = "add4",
-                        Address5 = "add5",
-                        Address6 = "add6",
-                    };
+                private Address PopulatedAddress() => new Address("add1","add2","add3","add4","add5", "add6");
 
                 [Test]
                 public void CheckInterfaces()
@@ -114,9 +106,9 @@ namespace NLC.Library.Tests
                         var address4 = "Address4";
                         var postCode = new PostCode("TN1 2BE");
 
-                        var sut = new Address {Address2 = address2, Address4 = address4, PostCode = postCode};
+                        var sut = new Address (null,address2,null, address4,null,null){ PostCode = postCode};
 
-                        var expected = new Address {Address1 = address2, Address2 = address4};
+                        var expected = new Address (address2, address4, null,null,null,null){PostCode = postCode};
 
                         sut.Simplify();
 
