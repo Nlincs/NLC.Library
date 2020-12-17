@@ -35,15 +35,13 @@ namespace NLC.Library.Validators
                 public bool ValidAddress(string address1, string address2, string address3, string address4,
                     string address5, string address6)
                     {
-                        var checkAddress = new AddressLines
-                            {
-                                Address1 = address1,
-                                Address2 = address2,
-                                Address3 = address3,
-                                Address4 = address4,
-                                Address5 = address5,
-                                Address6 = address6
-                            };
+                        var checkAddress = new AddressLines(address1,
+                                address2,
+                                address3,
+                                address4,
+                                address5,
+                                address6
+                            );
                         return !checkAddress.IsEmptyAddress();
                     }
 

@@ -5,8 +5,8 @@
 //  </copyright>
 //  <summary>
 // 
-//  Created - 19/10/2020 09:51
-//  Altered - 16/12/2020 14:49 - Stephen Ellwood
+//  Created - 16/12/2020 15:16
+//  Altered - 17/12/2020 15:31 - Stephen Ellwood
 // 
 //  Project : - NLC.Library
 // 
@@ -23,6 +23,13 @@ namespace NLC.Library
         /// </summary>
         public abstract class AddressBase : ILocation
             {
+                private string _address1;
+                private string _address2;
+                private string _address3;
+                private string _address4;
+                private string _address5;
+                private string _address6;
+
                 protected AddressBase(IAddressLines address)
                     {
                         OriginalAddress = address;
@@ -59,9 +66,17 @@ namespace NLC.Library
                         Address6 = address.County;
                     }
 
-                protected AddressBase()
+                protected AddressBase(string address1, string address2, string address3, string address4,
+                    string address5, string address6)
                     {
+                        _address1 = address1;
+                        _address2 = address2;
+                        _address3 = address3;
+                        _address4 = address4;
+                        _address5 = address5;
+                        _address6 = address6;
                     }
+
 
                 /// <summary>
                 ///     Original address at creation of instance
@@ -271,15 +286,46 @@ namespace NLC.Library
                 /// </remarks>
                 public void Simplify()
                     {
+                        var dummyLine = "##DUMMY ADDRESS LINE##";
                         // first tidy up
-                        Address1 = Address1.Trim();
-                        Address2 = Address2.Trim();
-                        Address3 = Address3.Trim();
-                        Address4 = Address4.Trim();
-                        Address5 = Address5.Trim();
-                        Address6 = Address6.Trim();
+                        Address1 = Address1 == null ? "" : Address1.Trim();
+                        Address2 = Address2 == null ? "" : Address2.Trim();
+                        Address3 = Address3 == null ? "" : Address3.Trim();
+                        Address4 = Address4 == null ? "" : Address4.Trim();
+                        Address5 = Address5 == null ? "" : Address5.Trim();
+                        Address6 = Address6 == null ? "" : Address6.Trim();
 
-                        var tempFullAddress = FullAddress(Address1, Address2, Address3, Address4, Address5, Address6, false);
+                        // check for house number
+                        // we only check the first two addresses and deal if needed
+
+                        // house number is intended to be in address 2 but it could be swapped so we check here
+
+                        var houseNameIsNumeric = Address1.Trim().IsLong();
+                        var houseNameIsPartialNumeric = Address1.Trim().FirstWord().IsLong();
+
+                        if (houseNameIsNumeric)
+                            {         
+                                long.TryParse(Address1, out var houseNumber);
+                                // address1 is fully numeric so we swap
+                                Address1 = Address2 == null || Address2.Trim() == "" ? dummyLine : Address2;
+                                Address2 = houseNumber.ToString();
+                            }
+                        else
+                            {
+                                if (houseNameIsPartialNumeric)
+                                    {
+                                        // address1 is partial numeric, if address2 is empty we move the number
+                                        if (Address2 == null || Address2.Trim() == "")
+                                            {
+                                                long.TryParse(Address1.Trim().FirstWord(), out var houseNumber);
+                                                Address1 = Address1.Substring(houseNumber.ToString().Length);
+                                                Address2 = houseNumber.ToString();
+                                            }
+                                    }
+                            }
+
+                        var tempFullAddress = FullAddress(Address1, Address2, Address3, Address4, Address5, Address6,
+                            false);
 
                         // remove any redundancy so that we have a comma separated string
                         tempFullAddress.ReplaceAllMid(",,", "", 0, tempFullAddress.Length);
@@ -356,13 +402,21 @@ namespace NLC.Library
                                     Address6 = tempAddress[5].Trim();
                                     break;
                             }
+
+                        // now remove dummy if it exists
+                        if (Address1 == dummyLine)
+                            {
+                                Address1 = "";
+                            }
                     }
 
                 #region Implementation of IAddress
 
+                // House Name
                 /// <inheritdoc />
                 public string Address1 { get; set; } = "";
 
+                // House Number
                 /// <inheritdoc />
                 public string Address2 { get; set; } = "";
 

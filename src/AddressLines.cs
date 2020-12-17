@@ -6,7 +6,7 @@
 //  <summary>
 // 
 //  Created - 13/10/2020 16:36
-//  Altered - 16/10/2020 12:09 - Stephen Ellwood
+//  Altered - 16/12/2020 17:53 - Stephen Ellwood
 // 
 //  Project : - NLC.Library
 // 
@@ -21,9 +21,16 @@ namespace NLC.Library
         /// </summary>
         public class AddressLines : AddressBase, IAddressLines
             {
-                public AddressLines()
+                public AddressLines(string address1, string address2, string address3, string address4, string address5,
+                    string address6) : base(address1, address2, address3, address4, address5, address6)
                     {
-                    }
+            Address1 = address1;
+            Address2 = address2;
+            Address3 = address3;
+            Address4 = address4;
+            Address5 = address5;
+            Address6 = address6;
+        }
 
                 public AddressLines(IAddressLines address) : base(address)
                     {

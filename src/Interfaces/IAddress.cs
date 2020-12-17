@@ -27,24 +27,46 @@ namespace NLC.Library.Interfaces
             {
                 /// <summary>
                 /// </summary>
+                /// <remarks>
+                /// HouseName,
+                /// Primary Address
+                /// </remarks>
                 string Address1 { get; set; }
 
                 /// <summary>
                 /// </summary>
+                /// <remarks>
+                /// HouseNumber,
+                /// Secondary Address
+                /// </remarks>
                 string Address2 { get; set; }
 
                 /// <summary>
                 /// </summary>
+                /// <remarks>
+                /// Street
+                /// </remarks>
                 string Address3 { get; set; }
 
                 /// <summary>
                 /// </summary>
+                /// <remarks>
+                /// Location
+                /// </remarks>
                 string Address4 { get; set; }
 
                 /// <summary>
                 /// </summary>
+                /// <remarks>
+                /// Town
+                /// </remarks>
                 string Address5 { get; set; }
 
+                /// <summary>
+                /// </summary>
+                /// <remarks>
+                /// County
+                /// </remarks>
                 string Address6 { get; set; }
 
                 /// <summary>
