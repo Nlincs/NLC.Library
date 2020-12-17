@@ -5,8 +5,8 @@
 //  </copyright>
 //  <summary>
 // 
-//  Created - 19/10/2020 14:17
-//  Altered - 19/10/2020 14:51 - Stephen Ellwood
+//  Created - 19/10/2020 15:10
+//  Altered - 17/12/2020 09:57 - Stephen Ellwood
 // 
 //  Project : - NLC.Library
 // 
@@ -26,9 +26,16 @@ namespace NLC.Library
         /// </remarks>
         public class Address : AddressBase, IFullAddress
             {
-                public Address()
+                public Address(string address1, string address2, string address3, string address4, string address5,
+                    string address6) : base(address1, address2, address3, address4, address5, address6)
                     {
-                    }
+            Address1 = address1;
+            Address2 = address2;
+            Address3 = address3;
+            Address4 = address4;
+            Address5 = address5;
+            Address6 = address6;
+        }
 
                 public Address(IAddressLines address) : base(address)
                     {
@@ -138,36 +145,32 @@ namespace NLC.Library
 
 
                 public AddressLines AddressLines() =>
-                    new AddressLines
-                        {
-                            AddressLine1 = Address1,
-                            AddressLine2 = Address2,
-                            AddressLine3 = Address3,
-                            AddressLine4 = Address4,
-                            AddressLine5 = Address5,
-                            AddressLine6 = Address6
-                        };
+                    new AddressLines(
+                        AddressLine1 = Address1,
+                        AddressLine2 = Address2,
+                        AddressLine3 = Address3,
+                        AddressLine4 = Address4,
+                        AddressLine5 = Address5,
+                        AddressLine6 = Address6);
 
                 public AddressNamed AddressNamed() =>
-                    new AddressNamed
-                        {
-                            PrimaryAddress = Address1,
-                            SecondaryAddress = Address2,
-                            Street = Address3,
-                            Location = Address4,
-                            Town = Address5,
-                            County = Address6
-                        };
+                    new AddressNamed(
+                        PrimaryAddress = Address1,
+                        SecondaryAddress = Address2,
+                        Street = Address3,
+                        Location = Address4,
+                        Town = Address5,
+                        County = Address6
+                    );
 
                 public AddressNameNumber AddressNameNumber() =>
-                    new AddressNameNumber
-                        {
-                            HouseName = Address1,
-                            HouseNumber = Address2,
-                            Street = Address3,
-                            Location = Address4,
-                            Town = Address5,
-                            County = Address6
-                        };
+                    new AddressNameNumber(
+                        HouseName = Address1,
+                        HouseNumber = Address2,
+                        Street = Address3,
+                        Location = Address4,
+                        Town = Address5,
+                        County = Address6
+                    );
             }
     }

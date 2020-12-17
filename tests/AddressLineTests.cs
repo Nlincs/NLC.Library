@@ -6,7 +6,7 @@
 //  <summary>
 // 
 //  Created - 13/10/2020 16:38
-//  Altered - 16/10/2020 11:43 - Stephen Ellwood
+//  Altered - 17/12/2020 15:00 - Stephen Ellwood
 // 
 //  Project : - NLC.Library.Tests
 // 
@@ -30,7 +30,7 @@ namespace NLC.Library.Tests
 
                 private MockRepository _mockRepository;
 
-                private AddressLines CreateSimpleAddressLine() => new AddressLines();
+                private AddressLines CreateSimpleAddressLine() => new AddressLines(null, null, null, null, null, null);
 
                 [Test]
                 public void CheckInterfaces()
@@ -71,15 +71,14 @@ namespace NLC.Library.Tests
                 [Test]
                 public void AddressNameNumberConstructor_ExpectedResults()
                     {
-                        var address = new AddressNameNumber
-                            {
-                                HouseName = "name",
-                                HouseNumber = "number",
-                                Street = "street",
-                                Location = "location",
-                                Town = "town",
-                                County = "county"
-                            };
+                        var address = new AddressNameNumber(
+                            "name",
+                            "number",
+                            "street",
+                            "location",
+                            "town",
+                            "county"
+                        );
 
                         var actual = new AddressLines(address);
 
@@ -95,15 +94,14 @@ namespace NLC.Library.Tests
                 [Test]
                 public void AddressNamedConstructor_ExpectedResults()
                     {
-                        var address = new AddressNamed
-                            {
-                                PrimaryAddress = "primary",
-                                SecondaryAddress = "secondary",
-                                Street = "street",
-                                Location = "location",
-                                Town = "town",
-                                County = "county"
-                            };
+                        var address = new AddressNamed(
+                            "primary",
+                            "secondary",
+                            "street",
+                            "location",
+                            "town",
+                            "county"
+                        );
 
                         var actual = new AddressLines(address);
 
@@ -169,7 +167,6 @@ namespace NLC.Library.Tests
                         Assert.That(actual, Is.EqualTo(expected));
                     }
 
-       
 
                 [Test]
                 public void MatchedAddressesDifferentUprnAreNotEqual()
@@ -208,7 +205,7 @@ namespace NLC.Library.Tests
 
                         Assert.That(sut1, Is.Not.EqualTo(sut2));
                     }
-        
+
 
                 [Test]
                 public void NonNullAddressIsNotEmptyCheck()
@@ -309,7 +306,7 @@ namespace NLC.Library.Tests
 
                         Assert.That(actual, Is.EqualTo(postCode));
                     }
-                
+
                 [Test]
                 public void UnmatchedPartialAreNotEqual()
                     {
@@ -536,7 +533,7 @@ namespace NLC.Library.Tests
                         var add3 = "ADD3";
                         var add6 = "address 6";
 
-                        var expected = new AddressLines {Address1 = add1, Address3 = add3, Address6 = add6};
+                        var expected = new AddressLines(add1, null, add3, null, null, add6);
 
                         var sut = new AddressNameNumber(expected);
 
@@ -548,6 +545,40 @@ namespace NLC.Library.Tests
                         Assert.That(sut, Is.Not.Null);
 
                         Assert.That(sut.FullAddress(), Is.EqualTo(expected.FullAddress()));
+                        Assert.That(sut.Address1, Is.EqualTo(add1));
+                        Assert.That(sut.Address2, Is.Null);
+                        Assert.That(sut.Address3, Is.EqualTo(add3));
+                        Assert.That(sut.Address4, Is.Null);
+                        Assert.That(sut.Address5, Is.Null);
+                        Assert.That(sut.Address6, Is.EqualTo(add6));
+                    }
+
+                [Test]
+                public void RestoreEmpty_returnsExpected()
+                    {
+                        var add1 = "add1";
+
+                        var add3 = "ADD3";
+                        var add6 = "address 6";
+
+                        var expected = new AddressLines(null, null, null, null, null, null);
+
+                        var sut = new AddressNameNumber(expected);
+
+                        sut.Simplify();
+                        sut.Address6 = "new address 6";
+
+                        sut.Restore();
+
+                        Assert.That(sut, Is.Not.Null);
+
+                        Assert.That(sut.FullAddress(), Is.EqualTo(expected.FullAddress()));
+                        Assert.That(sut.Address1, Is.Null);
+                        Assert.That(sut.Address2, Is.Null);
+                        Assert.That(sut.Address3, Is.Null);
+                        Assert.That(sut.Address4, Is.Null);
+                        Assert.That(sut.Address5, Is.Null);
+                        Assert.That(sut.Address6, Is.Null);
                     }
 
                 [Test]

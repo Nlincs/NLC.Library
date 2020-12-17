@@ -21,11 +21,17 @@ namespace NLC.Library
         /// </summary>
         public sealed class AddressNameNumber : AddressBase, IAddressNameNumber
             {
-                public AddressNameNumber()
-                    {
-                    }
+        public AddressNameNumber(string houseName, string HouseNumber, string Street, string Location, string Town,string County):base(houseName, HouseNumber, Street, Location, Town, County)
+        {
+            Address1 = houseName;
+            Address2 = HouseNumber;
+            Address3 = Street;
+            Address4 = Location;
+            Address5 = Town;
+            Address6 = County;
+        }
 
-                public AddressNameNumber(IAddressLines address) : base(address)
+        public AddressNameNumber(IAddressLines address) : base(address)
                     {
                     }
 
