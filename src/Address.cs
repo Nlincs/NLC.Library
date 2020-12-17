@@ -5,8 +5,8 @@
 //  </copyright>
 //  <summary>
 // 
-//  Created - 19/10/2020 15:10
-//  Altered - 17/12/2020 09:57 - Stephen Ellwood
+//  Created - 17/12/2020 16:06
+//  Altered - 17/12/2020 16:14 - Stephen Ellwood
 // 
 //  Project : - NLC.Library
 // 
@@ -26,16 +26,27 @@ namespace NLC.Library
         /// </remarks>
         public class Address : AddressBase, IFullAddress
             {
+                public Address()
+                    {
+                        var defaultAddress = "";
+                        Address1 = defaultAddress;
+                        Address2 = defaultAddress;
+                        Address3 = defaultAddress;
+                        Address4 = defaultAddress;
+                        Address5 = defaultAddress;
+                        Address6 = defaultAddress;
+                    }
+
                 public Address(string address1, string address2, string address3, string address4, string address5,
                     string address6) : base(address1, address2, address3, address4, address5, address6)
                     {
-            Address1 = address1;
-            Address2 = address2;
-            Address3 = address3;
-            Address4 = address4;
-            Address5 = address5;
-            Address6 = address6;
-        }
+                        Address1 = address1;
+                        Address2 = address2;
+                        Address3 = address3;
+                        Address4 = address4;
+                        Address5 = address5;
+                        Address6 = address6;
+                    }
 
                 public Address(IAddressLines address) : base(address)
                     {
