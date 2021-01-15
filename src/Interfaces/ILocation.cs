@@ -16,7 +16,7 @@
 namespace NLC.Library.Interfaces
     {
         /// <summary>
-        ///     Location
+        ///     Location elements of an address
         /// </summary>
         /// <remarks>Location of property/street section</remarks>
         public interface ILocation : IAddress
