@@ -12,7 +12,7 @@
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/53beda2ce15e45c8b662363f2c1f1344)](https://www.codacy.com/gh/Nlincs/NLC.Library/dashboard?utm_source=github.com&utm_medium=referral&utm_content=Nlincs/NLC.Library&utm_campaign=Badge_Grade)
 
-Library of extensions and models for netstandard 2.0.
+Library of extensions and models for netstandard 2.0 and .NET 6
 This is the latest c# incarnation of this library. Some of the functionality is now available in standard libraries and can be ignored, it has been left in for legacy reasons in particular where there are slight differences in functionality. The library provides various generic functions e.g. string and DateTime and also provides functions and models based on local governement in the UK, e.g. UPRN, USRN.
 
 ## Extensions

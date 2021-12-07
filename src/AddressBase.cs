@@ -5,8 +5,8 @@
 //  </copyright>
 //  <summary>
 // 
-//  Created - 16/12/2020 15:16
-//  Altered - 17/12/2020 15:31 - Stephen Ellwood
+//  Created - 17/12/2020 16:18
+//  Altered - 17/12/2020 17:38 - Stephen Ellwood
 // 
 //  Project : - NLC.Library
 // 
@@ -86,7 +86,7 @@ namespace NLC.Library
                         Address4 = defaultAddress;
                         Address5 = defaultAddress;
                         Address6 = defaultAddress;
-        }
+                    }
 
 
                 /// <summary>
@@ -313,9 +313,11 @@ namespace NLC.Library
 
                         var houseNameIsNumeric = Address1.Trim().IsLong();
                         var houseNameIsPartialNumeric = Address1.Trim().FirstWord().IsLong();
+                        var houseNumberIsNumeric = Address2.Trim().IsLong();
+                        var houseNumberIsPartialNumeric = Address2.Trim().FirstWord().IsLong();
 
                         if (houseNameIsNumeric)
-                            {         
+                            {
                                 long.TryParse(Address1, out var houseNumber);
                                 // address1 is fully numeric so we swap
                                 Address1 = Address2 == null || Address2.Trim() == "" ? dummyLine : Address2;
@@ -331,6 +333,27 @@ namespace NLC.Library
                                                 long.TryParse(Address1.Trim().FirstWord(), out var houseNumber);
                                                 Address1 = Address1.Substring(houseNumber.ToString().Length);
                                                 Address2 = houseNumber.ToString();
+                                            }
+                                    }
+                                else
+                                    {
+                                        if (houseNumberIsNumeric &&
+                                            (Address1 == null || Address1.Trim() == ""))
+                                            {
+                                                // housenumber is numeric and house nameis empty so we add dummy line to prevent losing empty line which will throw out the order
+                                                Address1 = dummyLine;
+                                            }
+                                        else
+                                            {
+                                                if (houseNumberIsPartialNumeric &&
+                                                    (Address1 == null || Address1.Trim() == ""))
+                                                    {
+                                                        // housenumber contains a partial numeric e.g. 32 High street so we split it out
+                                                        long.TryParse(Address2.Trim().FirstWord(),
+                                                            out var house2Number);
+                                                        Address1 = Address2.Substring(house2Number.ToString().Length);
+                                                        Address2 = house2Number.ToString();
+                                                    }
                                             }
                                     }
                             }
