@@ -5,8 +5,8 @@
 //  </copyright>
 //  <summary>
 // 
-//  Created - 17/12/2020 16:06
-//  Altered - 17/12/2020 17:26 - Stephen Ellwood
+//  Created - 07/12/2021 00:56
+//  Altered - 07/12/2021 09:14 - Stephen Ellwood
 // 
 //  Project : - NLC.Library.Tests
 // 
@@ -435,101 +435,100 @@ namespace NLC.Library.Tests
                     }
 
 
-        [Test]
-        public void AddressSimplify_HouseNumberHasNumber_ReturnsExpected()
-            {
-                var add2 = 21.ToString();
-          
-                var add3 = "ADD3";
-                var add4 = "";
-                var add5 = "add_5";
-                var add6 = "address 6";
+                [Test]
+                public void AddressSimplify_HouseNumberHasNumber_ReturnsExpected()
+                    {
+                        var add2 = 21.ToString();
 
-                var sut = new AddressNameNumber(null,add2,  add3, add4, add5, add6);
+                        var add3 = "ADD3";
+                        var add4 = "";
+                        var add5 = "add_5";
+                        var add6 = "address 6";
 
-                sut.Simplify();
+                        var sut = new AddressNameNumber(null, add2, add3, add4, add5, add6);
 
-                Assert.That(sut, Is.Not.Null);
-                Assert.That(sut.HouseName, Is.EqualTo(""));
-                Assert.That(sut.HouseNumber, Is.EqualTo(add2));
-                Assert.That(sut.Address3, Is.EqualTo(add3));
-                Assert.That(sut.Address4, Is.EqualTo(add5));
-                Assert.That(sut.Address5, Is.EqualTo(add6));
-                Assert.That(sut.Address6, Is.EqualTo(""));
+                        sut.Simplify();
+
+                        Assert.That(sut, Is.Not.Null);
+                        Assert.That(sut.HouseName, Is.EqualTo(""));
+                        Assert.That(sut.HouseNumber, Is.EqualTo(add2));
+                        Assert.That(sut.Address3, Is.EqualTo(add3));
+                        Assert.That(sut.Address4, Is.EqualTo(add5));
+                        Assert.That(sut.Address5, Is.EqualTo(add6));
+                        Assert.That(sut.Address6, Is.EqualTo(""));
+                    }
+
+                [Test]
+                public void AddressSimplify_HouseNumberHasNumber_HouseNameNotEmpty_ReturnsExpected()
+                    {
+                        var add1 = "13 the street";
+                        var add2 = 21.ToString();
+                        var add3 = "ADD3";
+                        var add4 = "";
+                        var add5 = "add_5";
+                        var add6 = "address 6";
+
+                        var sut = new AddressNameNumber(add1, add2, add3, add4, add5, add6);
+
+                        sut.Simplify();
+
+                        Assert.That(sut, Is.Not.Null);
+                        Assert.That(sut.HouseName, Is.EqualTo(add1));
+                        Assert.That(sut.HouseNumber, Is.EqualTo(add2));
+                        Assert.That(sut.Address3, Is.EqualTo(add3));
+                        Assert.That(sut.Address4, Is.EqualTo(add5));
+                        Assert.That(sut.Address5, Is.EqualTo(add6));
+                        Assert.That(sut.Address6, Is.EqualTo(""));
+                    }
+
+
+                [Test]
+                public void AddressSimplify_HouseNumberHasPartialNumber_ReturnsExpected()
+                    {
+                        var add1number = 21.ToString();
+                        var add1Name = " the knowle";
+
+                        var add1 = add1number + add1Name;
+
+                        var add3 = "ADD3";
+                        var add4 = "";
+                        var add5 = "add_5";
+                        var add6 = "address 6";
+
+                        var sut = new AddressNameNumber(add1, null, add3, add4, add5, add6);
+
+                        sut.Simplify();
+
+                        Assert.That(sut, Is.Not.Null);
+                        Assert.That(sut.HouseName, Is.EqualTo(add1Name.Trim()));
+                        Assert.That(sut.HouseNumber, Is.EqualTo(add1number));
+                        Assert.That(sut.Address3, Is.EqualTo(add3));
+                        Assert.That(sut.Address4, Is.EqualTo(add5));
+                        Assert.That(sut.Address5, Is.EqualTo(add6));
+                        Assert.That(sut.Address6, Is.EqualTo(""));
+                    }
+
+                [Test]
+                public void AddressSimplify_HouseNumberHasPartiaNumber_HouseNameNotEmpty_ReturnsExpected()
+                    {
+                        var add1 = 21.ToString();
+                        var add2 = "13 name the house";
+                        var add3 = "ADD3";
+                        var add4 = "";
+                        var add5 = "add_5";
+                        var add6 = "address 6";
+
+                        var sut = new AddressNameNumber(HouseNumber: add1, houseName: add2, Street: add3, Location: add4, Town: add5, County: add6);
+
+                        sut.Simplify();
+
+                        Assert.That(sut, Is.Not.Null);
+                        Assert.That(sut.HouseNumber, Is.EqualTo(add1));
+                        Assert.That(sut.HouseName, Is.EqualTo(add2));
+                        Assert.That(sut.Address3, Is.EqualTo(add3));
+                        Assert.That(sut.Address4, Is.EqualTo(add5));
+                        Assert.That(sut.Address5, Is.EqualTo(add6));
+                        Assert.That(sut.Address6, Is.EqualTo(""));
+                    }
             }
-
-        [Test]
-        public void AddressSimplify_HouseNumberHasNumber_HouseNameNotEmpty_ReturnsExpected()
-            {  
-                var add1 = "13 the street";
-                var add2 = 21.ToString();
-     var add3 = "ADD3";
-                var add4 = "";
-                var add5 = "add_5";
-                var add6 = "address 6";
-
-                var sut = new AddressNameNumber(add1, add2, add3, add4, add5, add6);
-
-                sut.Simplify();
-
-                Assert.That(sut, Is.Not.Null);
-                Assert.That(sut.HouseName, Is.EqualTo(add1));
-                Assert.That(sut.HouseNumber, Is.EqualTo(add2));
-                Assert.That(sut.Address3, Is.EqualTo(add3));
-                Assert.That(sut.Address4, Is.EqualTo(add5));
-                Assert.That(sut.Address5, Is.EqualTo(add6));
-                Assert.That(sut.Address6, Is.EqualTo(""));
-            }
-
-
-        [Test]
-        public void AddressSimplify_HouseNumberHasPartialNumber_ReturnsExpected()
-            {
-            var add1number = 21.ToString();
-            var add1Name = " the knowle";
-
-            var add1 = add1number + add1Name;
-
-            var add3 = "ADD3";
-                var add4 = "";
-                var add5 = "add_5";
-                var add6 = "address 6";
-
-                var sut = new AddressNameNumber(add1, null, add3, add4, add5, add6);
-
-                sut.Simplify();
-
-                Assert.That(sut, Is.Not.Null);
-                Assert.That(sut.HouseName, Is.EqualTo(add1Name.Trim()));
-                Assert.That(sut.HouseNumber, Is.EqualTo(add1number));
-                Assert.That(sut.Address3, Is.EqualTo(add3));
-                Assert.That(sut.Address4, Is.EqualTo(add5));
-                Assert.That(sut.Address5, Is.EqualTo(add6));
-                Assert.That(sut.Address6, Is.EqualTo(""));
-            }
-
-        [Test]
-        public void AddressSimplify_HouseNumberHasPartiaNumber_HouseNameNotEmpty_ReturnsExpected()
-            {         var add1 = 21.ToString();
-                var add2 = "13 the street";
-       var add3 = "ADD3";
-                var add4 = "";
-                var add5 = "add_5";
-                var add6 = "address 6";
-
-                var sut = new AddressNameNumber(add1, add2, add3, add4, add5, add6);
-
-                sut.Simplify();
-
-                Assert.That(sut, Is.Not.Null);
-                Assert.That(sut.HouseName, Is.EqualTo(add1));
-                Assert.That(sut.HouseNumber, Is.EqualTo(add2));
-                Assert.That(sut.Address3, Is.EqualTo(add3));
-                Assert.That(sut.Address4, Is.EqualTo(add5));
-                Assert.That(sut.Address5, Is.EqualTo(add6));
-                Assert.That(sut.Address6, Is.EqualTo(""));
-            }
-
-
     }
-}
