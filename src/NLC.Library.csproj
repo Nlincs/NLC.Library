@@ -80,7 +80,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="libphonenumber-csharp" Version="8.12.34" />
+        <PackageReference Include="libphonenumber-csharp" Version="8.12.45" />
         <PackageReference Include="ServiceStack.Text" Version="5.13.2" />
     </ItemGroup>
 
