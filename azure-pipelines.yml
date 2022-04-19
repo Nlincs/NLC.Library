@@ -16,6 +16,8 @@ steps:
 - script: dotnet build -c $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
 
+- script: dotnet test -c $(buildConfiguration)
+
 # steps:
 # - script: echo Hello, world!
 #   displayName: 'Run a one-line script'
