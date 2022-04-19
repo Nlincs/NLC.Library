@@ -28,18 +28,18 @@ This is a range of string operations, including a concept of words ie a set of c
 
 #### String tests
 
--   Is Numeric - attempts to determine if a string contains a valid Number
--   Is Numeric Characters - checks for numeric only characters in a String
--   Is Long
--   Is Integer
--   Is Alphabetic - checks for alphabetic only characters - a-z
--   Is Alphabetic character
--   Is Numeric character
--   Is Alphanumeric - checks a string only contains alphanumerics
--   Is Alphanumeric character
--   Is Valid file name - checks that the characters in the file name are valid for Windows
--   Is Unicode
--   Is All Whitespace - checks if all of a string is whitespace
+- Is Numeric - attempts to determine if a string contains a valid Number
+- Is Numeric Characters - checks for numeric only characters in a String
+- Is Long
+- Is Integer
+- Is Alphabetic - checks for alphabetic only characters - a-z
+- Is Alphabetic character
+- Is Numeric character
+- Is Alphanumeric - checks a string only contains alphanumerics
+- Is Alphanumeric character
+- Is Valid file name - checks that the characters in the file name are valid for Windows
+- Is Unicode
+- Is All Whitespace - checks if all of a string is whitespace
 
 #### Word functions
 
@@ -53,19 +53,20 @@ This is a range of string operations, including a concept of words ie a set of c
 
 #### Replace functions
 
--   Replace All - replaces all instances of a substring in the input
--   Replace All From - Replaces all instances of a substring from the input starting at a specific point in the input
--   Replace To 
--   Replace All To - Replaces all instances of a substring from the input up to a given location
--   Replace Mid - replaces a substring within a substring of the input
--   ReplaceAllMid - replaces all substrings within a substring of the input
--   Replace Whitespace
--   Replace Unicode
--   Remove Unicode
--   LTrim, RTrim
--   Replace Duplicate spaces
--   Sanitise - returns the input with all of the set of characters provided having been removed
--   Sanitise Non Alpha Numerics - attempts to remove all non alphanumerics from the input (optionally keeps spaces, optionally keeps simple punctuation e.g. full stops)
+- Replace All - replaces all instances of a substring in the input
+- Replace All From - Replaces all instances of a substring from the input starting at a specific point in the input
+- Replace To 
+- Replace All To - Replaces all instances of a substring from the input up to a given location
+- Replace Mid - replaces a substring within a substring of the input
+- ReplaceAllMid - replaces all substrings within a substring of the input
+- Replace Whitespace
+- Replace Unicode
+- Remove Unicode
+- LTrim, RTrim
+- LTrimCSV, RtrimCSV, TrimCSV - removes all leading, trailing or leading and trailing spaces and comma's
+- Replace Duplicate spaces
+- Sanitise - returns the input with all of the set of characters provided having been removed
+- Sanitise Non Alpha Numerics - attempts to remove all non alphanumerics from the input (optionally keeps spaces, optionally keeps simple punctuation e.g. full stops)
 
 #### string formatting
 

@@ -5,8 +5,8 @@
 //  </copyright>
 //  <summary>
 // 
-//  Created - 13/10/2020 16:35
-//  Altered - 16/10/2020 14:45 - Stephen Ellwood
+//  Created - 17/03/2021 17:48
+//  Altered - 19/04/2022 11:51 - Stephen Ellwood
 // 
 //  Project : - NLC.Library
 // 
@@ -663,7 +663,7 @@ namespace NLC.Library.Extensions
                                     };
 
                                 using (var xmlWriter = XmlWriter.Create(stringBuilder,
-                                    settings))
+                                           settings))
                                     {
                                         element.Save(xmlWriter);
                                     }
@@ -1101,7 +1101,7 @@ namespace NLC.Library.Extensions
                         for (i = 0; i <= replaceIn.Length - 1; i++)
                             {
                                 if (char.IsLetterOrDigit(replaceIn,
-                                    i))
+                                        i))
                                     {
                                         results.Append(replaceIn[i]);
                                     }
@@ -1360,7 +1360,7 @@ namespace NLC.Library.Extensions
                                 return 0;
                             }
 
-                        char[] space = {' '};
+                        char[] space = { ' ' };
 
                         var words = paragraph.Split(space,
                             StringSplitOptions.RemoveEmptyEntries);
@@ -1396,7 +1396,7 @@ namespace NLC.Library.Extensions
                 public static long WordCount(this string paragraph,
                     char seperator)
                     {
-                        var sep = new[] {seperator};
+                        var sep = new[] { seperator };
 
                         return WordCount(paragraph,
                             sep);
@@ -1472,5 +1472,89 @@ namespace NLC.Library.Extensions
 
                         return result;
                     }
+
+                /// <summary>
+                ///     trim leading whitespace and comma's
+                /// </summary>
+                /// <param name="input"></param>
+                /// <returns>string that begins with a character that isn't a space or a comma or is empty, otherwise returns empty string</returns>
+                public static string LTrimCSV(this string input)
+                    {
+                        if (input == null || input.Trim() == "")
+                            {
+                                return string.Empty;
+                            }
+
+                        var counter = 0;
+                        var exit = false;
+
+                        do
+                            {
+                                if (IsCSVDelimiter(input[counter]))
+                                    {
+                                        counter++;
+                                    }
+                                else
+                                    {
+                                        exit = true;
+                                    }
+                            } while (!exit && counter < input.Length);
+
+                        return input.Substring(counter);
+                    }
+
+
+                /// <summary>
+                ///     trim trailing whitespace and comma's
+                /// </summary>
+                /// <param name="input"></param>
+                /// <returns>string that ends with a character that isn't a space or a comma or is empty, otherwise returns empty string</returns>
+                public static string RTrimCSV(this string input)
+                    {
+                        if (input == null || input.Trim() == "")
+                            {
+                                return string.Empty;
+                            }
+
+                        var counter = input.Length - 1;
+                        var exit = false;
+
+                        do
+                            {
+                                if (IsCSVDelimiter(input[counter]))
+                                    {
+                                        counter--;
+                                    }
+                                else
+                                    {
+                                        exit = true;
+                                    }
+                            } while (!exit && counter >= 0);
+
+                        return input.Substring(0, counter + 1);
+                    }
+
+                /// <summary>
+                ///     trim leading and trailing whitespace and comma's
+                /// </summary>
+                /// <param name="input"></param>
+                /// <returns>string that ends with a character that isn't a space or a comma or is empty, otherwise returns empty string</returns>
+                public static string TrimCSV(this string input)
+                    {
+                        if (input == null || input.Trim() == "")
+                            {
+                                return string.Empty;
+                            }
+
+                        return LTrimCSV(RTrimCSV(input));
+                    }
+
+
+                /// <summary>
+                ///     determines if the input is a elimiter as used in CSV
+                /// </summary>
+                /// <param name="input"></param>
+                /// <returns></returns>
+                public static bool IsCSVDelimiter(this char input) => input == ' ' || input == ',';
             }
     }

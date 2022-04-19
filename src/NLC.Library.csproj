@@ -9,7 +9,7 @@
         <GenerateDocumentationFile>True</GenerateDocumentationFile>
         <Title>NLC Function Library</Title>
         <PackageDescription>NLC Function Library</PackageDescription>
-        <Version>0.2.1</Version>
+        <Version>0.2.2</Version>
         <Authors>S Ellwood</Authors>
         <Company>NLC</Company>
         <Description>
@@ -22,6 +22,7 @@
         <RepositoryUrl>https://github.com/NLincs/NLC.Library.git</RepositoryUrl>
         <PackageProjectUrl>https://github.com/NLincs/NLC.Library</PackageProjectUrl>
         <PackageReleaseNotes>
+            0.2.2 Added CSVTrim function
             0.2.1 Added .net reference libraries
             0.2   updated to include .NET 6 TFM
             0.1.5.1 restored address constructor for legacy code
