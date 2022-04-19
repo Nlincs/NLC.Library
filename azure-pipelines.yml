@@ -17,7 +17,6 @@ steps:
   displayName: 'dotnet build $(buildConfiguration)'
 
 - script: dotnet test -c $(buildConfiguration)
-  displayName:: 'Testing'
 
 # steps:
 # - script: echo Hello, world!
