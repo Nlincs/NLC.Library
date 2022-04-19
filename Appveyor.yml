@@ -4,13 +4,9 @@ version: '#{build}'
 skip_non_tags: true
 image: Visual Studio 2022
 configuration: Release
-platform:
-- Any CPU
-- Any CPU
+platform: Any CPU
+nuget:
+  project_feed: true
 build:
   project: NLC.Library.sln
   verbosity: minimal
-test:
-  categories:
-    except:
-    - ignore
