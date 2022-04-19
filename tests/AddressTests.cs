@@ -92,7 +92,7 @@ namespace NLC.Library.Tests
                         Assert.That(sut.SecondaryAddress, Is.EqualTo("add2"));
                         Assert.That(sut.Street, Is.EqualTo("add3"));
                         Assert.That(sut.Location, Is.EqualTo("add4"));
-                        Assert.That(sut.Town, Is.EqualTo("add5"));
+                        Assert.That(sut.Town, Is.EqualTo("add5")); 
                         Assert.That(sut.County, Is.EqualTo("add6"));
 
                         Assert.That(sut.HouseName, Is.EqualTo("add1"));

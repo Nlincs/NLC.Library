@@ -44,7 +44,7 @@ namespace NLC.Library.Tests.Extensions
                         var actual = list10.SplitToBuckets(3);
 
                         Assert.That(actual, Is.Not.Null);
-                        Assert.That(actual.Count(), Is.EqualTo(3));
+                        Assert.That(actual.Count, Is.EqualTo(3));
                         CollectionAssert.AllItemsAreNotNull(actual);
 
                         var first = actual.ToArray()[0];

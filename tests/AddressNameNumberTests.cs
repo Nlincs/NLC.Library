@@ -306,8 +306,7 @@ namespace NLC.Library.Tests
                 [Test]
                 public void AddressSimplify_HouseNumber_NoNameNumber_ReturnsExpected()
                     {
-                        //var add1 = "add1";
-                        //var add2 = "add2";
+
                         var add3 = "ADD3";
                         var add4 = "";
                         var add5 = "add_5";
@@ -315,8 +314,6 @@ namespace NLC.Library.Tests
 
                         var sut = CreateSimpleAddressNameNumber();
 
-                        //sut.AddressLine1 = add1;
-                        //sut.AddressLine2 = add2;
                         sut.Street = add3;
                         sut.Location = add4;
                         sut.Town = add5;
@@ -338,7 +335,7 @@ namespace NLC.Library.Tests
                 public void AddressSimplify_HouseNameHasNumber_ReturnsExpected()
                     {
                         var add1 = 21.ToString();
-                        //var add2 = "add2";
+       
                         var add3 = "ADD3";
                         var add4 = "";
                         var add5 = "add_5";
@@ -388,7 +385,7 @@ namespace NLC.Library.Tests
                         var add1Name = " the knowle";
 
                         var add1 = add1number + add1Name;
-                        //var add2 = "add2";
+                        
                         var add3 = "ADD3";
                         var add4 = "";
                         var add5 = "add_5";

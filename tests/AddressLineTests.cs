@@ -556,11 +556,7 @@ namespace NLC.Library.Tests
                 [Test]
                 public void RestoreEmpty_returnsExpected()
                     {
-                        var add1 = "add1";
-
-                        var add3 = "ADD3";
-                        var add6 = "address 6";
-
+                      
                         var expected = new AddressLines(null, null, null, null, null, null);
 
                         var sut = new AddressNameNumber(expected);
