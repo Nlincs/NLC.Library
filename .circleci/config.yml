@@ -1,12 +1,34 @@
  version: 2.1
 
  orbs:
-  win: circleci/windows@2.2.0
+  windows: circleci/windows@2.4
 
  jobs:
-   build:
-     executor: win/default     
-    
+   test:
+     description: 'Setup and run tests'
+     executor: 
+       name: windows/default     
      steps:
        - checkout
-       - run: dotnet build
+       - run: 
+           name: 'Install dependencies'
+           command: dotnet.exe restore
+       - run:
+            name: 'Run tests'
+            command: dotnet test
+   build:
+     description: 'Build app'
+     executor: 
+       name: windows/default
+     steps:
+       - checkout
+       - run:
+           name: 'Build app'
+           command: dotnet.exe build -c Release
+ workflows:
+   test_and_build:
+     jobs:
+       - test
+       - build:
+            requires:
+              - test
