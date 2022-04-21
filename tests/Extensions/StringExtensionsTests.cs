@@ -1,23 +1,23 @@
 //  --------------------------------------------------------------------------------------------------------------------
 //  <copyright file=StringExtensionsTests.cs company="North Lincolnshire Council">
-//  Solution : -  Library
+//  Solution : -  NLC.Library
 // 
 //  </copyright>
 //  <summary>
 // 
-//  Created - 08/07/2020 10:59
-//  Altered - 06/07/2020 12:53 - Stephen Ellwood
+//  Created - 13/10/2020 16:37
+//  Altered - 19/04/2022 11:56 - Stephen Ellwood
 // 
-//  Project : - Library.tests
+//  Project : - NLC.Library.Tests
 // 
 //  </summary>
 //  --------------------------------------------------------------------------------------------------------------------
 
+using NLC.Library.Extensions;
+using NUnit.Framework;
 using System;
 using System.Linq;
 using System.Net;
-using NLC.Library.Extensions;
-using NUnit.Framework;
 
 namespace NLC.Library.Tests.Extensions
     {
@@ -36,8 +36,6 @@ namespace NLC.Library.Tests.Extensions
                         " f")]
                     string input)
                     {
-                     
-
                         var actual = input.BooleanValue();
 
                         Assert.That(actual,
@@ -73,8 +71,6 @@ namespace NLC.Library.Tests.Extensions
                         " TrUe")]
                     string input)
                     {
-                      
-
                         var actual = input.BooleanValue();
 
                         Assert.That(actual,
@@ -139,7 +135,6 @@ namespace NLC.Library.Tests.Extensions
                         "a")]
                     string input)
                     {
-                     
                         var actual = input.IsAlphabeticCharacter();
 
                         Assert.That(actual,
@@ -150,7 +145,6 @@ namespace NLC.Library.Tests.Extensions
                 [Category("IsNumericCharacter")]
                 public void EmptyIsNumericCharactersIsFalse()
                     {
-                     
                         var input = string.Empty;
 
                         var actual = input.IsNumericCharacters();
@@ -284,7 +278,6 @@ namespace NLC.Library.Tests.Extensions
                         '\u0133')]
                     char cinput)
                     {
-                       
                         var input = sInput + cinput;
 
                         var actual = input.IsAllWhitespace();
@@ -310,8 +303,6 @@ namespace NLC.Library.Tests.Extensions
                         '\u0133')]
                     char cinput)
                     {
-                     
-
                         var input = sinput + cinput;
 
                         var actual = input.IsAllWhitespace();
@@ -335,8 +326,6 @@ namespace NLC.Library.Tests.Extensions
                         "hi it's me")]
                     string input)
                     {
-                        
-
                         var actual = input.IsAlphabeticCharacter();
 
                         Assert.That(actual,
@@ -353,8 +342,6 @@ namespace NLC.Library.Tests.Extensions
                         "hi it's me")]
                     string input)
                     {
-                     
-
                         var actual = input.IsAlphabetic();
 
                         Assert.That(actual,
@@ -372,7 +359,6 @@ namespace NLC.Library.Tests.Extensions
                         "TrUe")]
                     string input)
                     {
-                      
                         var actual = input.IsAlphabetic();
 
                         Assert.That(actual,
@@ -391,8 +377,6 @@ namespace NLC.Library.Tests.Extensions
                         "1e")]
                     string input)
                     {
-                       
-
                         var actual = input.IsAlphaNumericCharacter();
 
                         Assert.That(actual,
@@ -411,8 +395,6 @@ namespace NLC.Library.Tests.Extensions
                         "e")]
                     string input)
                     {
-                   
-
                         var actual = input.IsAlphaNumericCharacter();
 
                         Assert.That(actual,
@@ -430,8 +412,6 @@ namespace NLC.Library.Tests.Extensions
                         "2^3")]
                     string input)
                     {
-                       
-
                         var actual = input.IsAlphaNumeric();
 
                         Assert.That(actual,
@@ -451,8 +431,6 @@ namespace NLC.Library.Tests.Extensions
                         "2e3")]
                     string input)
                     {
-                        
-
                         var actual = input.IsAlphaNumeric();
 
                         Assert.That(actual,
@@ -463,11 +441,8 @@ namespace NLC.Library.Tests.Extensions
                 [Test]
                 [Sequential]
                 [Category("Unicode")]
-                public void IsHtmlUnicode_ExpectedTrue([Values("&AElig;", "&Ucirc;", "&#330;")]
-                    string input)
+                public void IsHtmlUnicode_ExpectedTrue([Values("&AElig;", "&Ucirc;", "&#330;")] string input)
                     {
-                        
-
                         var actual = WebUtility.HtmlDecode(input).IsUnicode();
 
                         Assert.That(actual, Is.Not.Null);
@@ -541,8 +516,6 @@ namespace NLC.Library.Tests.Extensions
                         "-3147483647")]
                     string input)
                     {
-                      
-
                         var actual = input.IsLong();
 
                         Assert.That(actual,
@@ -563,8 +536,6 @@ namespace NLC.Library.Tests.Extensions
                         "1e")]
                     string input)
                     {
-                       
-
                         var actual = input.IsNumericCharacter();
 
                         Assert.That(actual,
@@ -579,8 +550,6 @@ namespace NLC.Library.Tests.Extensions
                         "9")]
                     string input)
                     {
-                
-
                         var actual = input.IsNumericCharacter();
 
                         Assert.That(actual,
@@ -595,8 +564,6 @@ namespace NLC.Library.Tests.Extensions
                         "67890")]
                     string input)
                     {
-                    
-
                         var actual = input.IsNumericCharacters();
 
                         Assert.That(actual,
@@ -617,8 +584,6 @@ namespace NLC.Library.Tests.Extensions
                         "1e")]
                     string input)
                     {
-                       
-
                         var actual = input.IsNumeric();
 
                         Assert.That(actual,
@@ -638,8 +603,6 @@ namespace NLC.Library.Tests.Extensions
                         "2e4")]
                     string input)
                     {
-                 
-
                         var actual = input.IsNumeric();
 
                         Assert.That(actual,
@@ -652,8 +615,6 @@ namespace NLC.Library.Tests.Extensions
                 [Category("Unicode")]
                 public void IsUnicode_ExpectedFalse([Values(" ", "1", "Z", "z0\n")] string input)
                     {
-                        
-
                         var actual = input.IsUnicode();
 
                         Assert.That(actual, Is.Not.Null);
@@ -666,7 +627,6 @@ namespace NLC.Library.Tests.Extensions
                 [Category("Unicode")]
                 public void IsUnicode_ExpectedTrue([Values('\u0b85', '\u0b86', '\u0080')] char input)
                     {
-                       
                         var actual = input.IsUnicode();
 
                         Assert.That(actual, Is.Not.Null);
@@ -714,8 +674,6 @@ namespace NLC.Library.Tests.Extensions
                         '\x88')]
                     char input)
                     {
-                      
-
                         var actual = input.IsWhitespace();
 
                         Assert.That(actual,
@@ -734,8 +692,6 @@ namespace NLC.Library.Tests.Extensions
                         '\x08', '\n', '\r', '\t')]
                     char input)
                     {
-
-
                         var actual = input.IsWhitespace();
 
                         Assert.That(actual,
@@ -1964,7 +1920,6 @@ namespace NLC.Library.Tests.Extensions
                         Assert.That(actual.Contains(newline),
                             Is.True);
                         Assert.That(actual.InStr("<root/>" + newline),
-
                             Is.EqualTo(0));
                     }
 
@@ -1983,7 +1938,7 @@ namespace NLC.Library.Tests.Extensions
                     {
                         var expected = count;
 
-                        var seperator = new[] {' '};
+                        var seperator = new[] { ' ' };
 
                         var actual = input.WordCount(seperator);
 
@@ -2034,13 +1989,130 @@ namespace NLC.Library.Tests.Extensions
                     {
                         var expected = count;
 
-                        var seperator = new[] {'-'};
+                        var seperator = new[] { '-' };
                         var actual = input.WordCount(seperator);
 
                         Assert.That(actual,
                             Is.Not.Null);
                         Assert.That(actual,
                             Is.EqualTo(expected));
+                    }
+
+
+                [Test]
+                [Category("LTrimCSV")]
+                public void LTrimRemovesCommas()
+                    {
+                        var input = " ,Some test text, ";
+                        var expected = "Some test text, ";
+
+
+                        var actual = input.LTrimCSV();
+
+                        Assert.That(actual, Is.EqualTo(expected));
+                    }
+
+                [Test]
+                [Category("LTrimCSV")]
+                [Sequential]
+                public void LTrimRemovesCommasVarious([Values("", "    ", ",,,,", ", ,,,  ,")] string input)
+                    {
+                        var expected = "";
+
+                        var actual = input.LTrimCSV();
+
+                        Assert.That(actual, Is.EqualTo(expected));
+                    }
+
+                [Test]
+                [Category("LTrimCSV")]
+                [Sequential]
+                public void LTrimRemovesCommasVariousWithText(
+                    [Values("Some text", "    Some text", ",,,, Some text", ", ,,,  ,Some text")]
+                    string input)
+                    {
+                        var expected = "Some text";
+
+                        var actual = input.LTrimCSV();
+
+                        Assert.That(actual, Is.EqualTo(expected));
+                    }
+
+
+                [Test]
+                [Category("RTrimCSV")]
+                public void RTrimRemovesCommas()
+                    {
+                        var input = " ,Some test text, ";
+                        var expected = " ,Some test text";
+
+                        var actual = input.RTrimCSV();
+
+                        Assert.That(actual, Is.EqualTo(expected));
+                    }
+
+                [Test]
+                [Category("RTrimCSV")]
+                [Sequential]
+                public void RTrimRemovesCommasVarious([Values("", "    ", ",,,,", ", ,,,  ,")] string input)
+                    {
+                        var expected = "";
+
+                        var actual = input.RTrimCSV();
+
+                        Assert.That(actual, Is.EqualTo(expected));
+                    }
+
+                [Test]
+                [Category("RTrimCSV")]
+                [Sequential]
+                public void RTrimRemovesCommasVariousWithText(
+                    [Values("Some text", "Some text    ", "Some text,,,, ", "Some text, ,,,  ,")]
+                    string input)
+                    {
+                        var expected = "Some text";
+
+                        var actual = input.RTrimCSV();
+
+                        Assert.That(actual, Is.EqualTo(expected));
+                    }
+
+                [Test]
+                [Category("TrimCSV")]
+                public void TrimRemovesCommas()
+                    {
+                        var input = " ,Some test text, ";
+                        var expected = "Some test text";
+
+                        var actual = input.TrimCSV();
+
+                        Assert.That(actual, Is.EqualTo(expected));
+                    }
+
+                [Test]
+                [Category("TrimCSV")]
+                [Sequential]
+                public void TrimRemovesCommasVarious([Values("", "    ", ",,,,", ", ,,,  ,")] string input)
+                    {
+                        var expected = "";
+
+                        var actual = input.TrimCSV();
+
+                        Assert.That(actual, Is.EqualTo(expected));
+                    }
+
+                [Test]
+                [Category("TrimCSV")]
+                [Sequential]
+                public void TrimRemovesCommasVariousWithText(
+                    [Values("Some text", ",,,   Some text    ", ",,,,Some text,,,, ", ", , , , Some text, ,,,  ,")]
+                    string input)
+                    {
+                        var expected = "Some text";
+
+                        var actual = input.TrimCSV();
+
+                        Assert.That(actual, Is.EqualTo(expected));
                     }
             }
     }

@@ -6,10 +6,10 @@
         <TargetFrameworks>netstandard2.0; net6.0</TargetFrameworks>
         <ImplicitUsings>disable</ImplicitUsings>
         <LangVersion>7.3</LangVersion>
-        <GenerateDocumentationFile>False</GenerateDocumentationFile>
+        <GenerateDocumentationFile>True</GenerateDocumentationFile>
         <Title>NLC Function Library</Title>
         <PackageDescription>NLC Function Library</PackageDescription>
-        <Version>0.2.0</Version>
+        <Version>0.2.2</Version>
         <Authors>S Ellwood</Authors>
         <Company>NLC</Company>
         <Description>
@@ -22,6 +22,8 @@
         <RepositoryUrl>https://github.com/NLincs/NLC.Library.git</RepositoryUrl>
         <PackageProjectUrl>https://github.com/NLincs/NLC.Library</PackageProjectUrl>
         <PackageReleaseNotes>
+            0.2.2 Added CSVTrim function
+            0.2.1 Added .net reference libraries
             0.2   updated to include .NET 6 TFM
             0.1.5.1 restored address constructor for legacy code
             0.1.5 updated Address Simplify to handle house name/number better 
@@ -59,6 +61,12 @@
     <PropertyGroup Condition="'$(IsLinux)'=='true'">
         <DefineConstants>Linux</DefineConstants>
     </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0|AnyCPU'">
+      <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0|AnyCPU'">
+      <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
     <ItemGroup>
       <Compile Remove="Extensions\FileInfoExtensions.cs" />
     </ItemGroup>
@@ -66,10 +74,6 @@
         <None Include="..\assets\cropped-NLC-browser-logo-icon-512x512-2-32x32.png">
           <Pack>True</Pack>
           <PackagePath>\</PackagePath>
-        </None>
-        <None Include="..\README.md">
-            <Pack>True</Pack>
-            <PackagePath>\</PackagePath>
         </None>
     </ItemGroup>
     <ItemGroup>
