@@ -3,13 +3,20 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-# no longer needed as we can do this in travis
+trigger:
+- master
 
-# trigger:
-# - master
+pool:
+  vmImage: ubuntu-latest
 
-# pool:
-#   vmImage: 'ubuntu-latest'
+variables:
+  buildConfiguration: 'Release'
+
+steps:
+- script: dotnet build -c $(buildConfiguration)
+  displayName: 'dotnet build $(buildConfiguration)'
+
+- script: dotnet test -c $(buildConfiguration)
 
 # steps:
 # - script: echo Hello, world!

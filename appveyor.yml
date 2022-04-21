@@ -1,0 +1,10 @@
+# Sadly abandoned, this doesn't integrate well with Github in that we can't see build/test progress
+# otherwise it would be the preferred option for windows builds
+version: 1.0.{build}
+image: Visual Studio 2022
+configuration: Release
+before_build:
+- cmd: dotnet restore
+build:
+  project: NLC.Library.sln
+  verbosity: minimal
