@@ -22,7 +22,7 @@
         <RepositoryUrl>https://github.com/NLincs/NLC.Library.git</RepositoryUrl>
         <PackageProjectUrl>https://github.com/NLincs/NLC.Library</PackageProjectUrl>
         <PackageReleaseNotes>
-            0.2.2 Added CSVTrim function
+            0.2.2 Added CSVTrim function, updated CI
             0.2.1 Added .net reference libraries
             0.2   updated to include .NET 6 TFM
             0.1.5.1 restored address constructor for legacy code
