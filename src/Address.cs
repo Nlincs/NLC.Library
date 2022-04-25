@@ -5,8 +5,8 @@
 //  </copyright>
 //  <summary>
 // 
-//  Created - 17/12/2020 16:06
-//  Altered - 17/12/2020 16:14 - Stephen Ellwood
+//  Created - 17/03/2021 17:48
+//  Altered - 25/04/2022 12:15 - Stephen Ellwood
 // 
 //  Project : - NLC.Library
 // 
@@ -26,6 +26,9 @@ namespace NLC.Library
         /// </remarks>
         public class Address : AddressBase, IFullAddress
             {
+                /// <summary>
+                ///     Constructor
+                /// </summary>
                 public Address()
                     {
                         var defaultAddress = "";
@@ -37,6 +40,9 @@ namespace NLC.Library
                         Address6 = defaultAddress;
                     }
 
+                /// <summary>
+                ///     Constructor
+                /// </summary>
                 public Address(string address1, string address2, string address3, string address4, string address5,
                     string address6) : base(address1, address2, address3, address4, address5, address6)
                     {
@@ -48,14 +54,23 @@ namespace NLC.Library
                         Address6 = address6;
                     }
 
+                /// <summary>
+                ///     Constructor
+                /// </summary>
                 public Address(IAddressLines address) : base(address)
                     {
                     }
 
+                /// <summary>
+                ///     Constructor
+                /// </summary>
                 public Address(IAddressNameNumber address) : base(address)
                     {
                     }
 
+                /// <summary>
+                ///     Constructor
+                /// </summary>
                 public Address(IAddressNamed address) : base(address)
                     {
                     }
@@ -117,30 +132,35 @@ namespace NLC.Library
                     set => Address2 = value;
                 }
 
+                /// <inheritdoc />
                 public string Street
                 {
                     get => Address3;
                     set => Address3 = value;
                 }
 
+                /// <inheritdoc />
                 public string Location
                 {
                     get => Address4;
                     set => Address4 = value;
                 }
 
+                /// <inheritdoc />
                 public string Town
                 {
                     get => Address5;
                     set => Address5 = value;
                 }
 
+                /// <inheritdoc />
                 public string County
                 {
                     get => Address6;
                     set => Address6 = value;
                 }
 
+                /// <inheritdoc />
                 public string HouseName
                 {
                     get => Address1;
@@ -155,6 +175,7 @@ namespace NLC.Library
                 }
 
 
+                /// <inheritdoc />
                 public AddressLines AddressLines() =>
                     new AddressLines(
                         AddressLine1 = Address1,
@@ -164,6 +185,7 @@ namespace NLC.Library
                         AddressLine5 = Address5,
                         AddressLine6 = Address6);
 
+                /// <inheritdoc />
                 public AddressNamed AddressNamed() =>
                     new AddressNamed(
                         PrimaryAddress = Address1,
@@ -174,6 +196,7 @@ namespace NLC.Library
                         County = Address6
                     );
 
+                /// <inheritdoc />
                 public AddressNameNumber AddressNameNumber() =>
                     new AddressNameNumber(
                         HouseName = Address1,

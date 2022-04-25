@@ -5,8 +5,8 @@
 //  </copyright>
 //  <summary>
 // 
-//  Created - 13/10/2020 16:36
-//  Altered - 16/10/2020 12:07 - Stephen Ellwood
+//  Created - 17/03/2021 17:48
+//  Altered - 25/04/2022 12:15 - Stephen Ellwood
 // 
 //  Project : - NLC.Library
 // 
@@ -21,24 +21,46 @@ namespace NLC.Library
         /// </summary>
         public sealed class AddressNameNumber : AddressBase, IAddressNameNumber
             {
-        public AddressNameNumber(string houseName, string HouseNumber, string Street, string Location, string Town,string County):base(houseName, HouseNumber, Street, Location, Town, County)
-        {
-            Address1 = houseName;
-            Address2 = HouseNumber;
-            Address3 = Street;
-            Address4 = Location;
-            Address5 = Town;
-            Address6 = County;
-        }
+                /// <summary>
+                ///     Constructor
+                /// </summary>
+                /// <param name="houseName"></param>
+                /// <param name="HouseNumber"></param>
+                /// <param name="Street"></param>
+                /// <param name="Location"></param>
+                /// <param name="Town"></param>
+                /// <param name="County"></param>
+                public AddressNameNumber(string houseName, string HouseNumber, string Street, string Location,
+                    string Town, string County):base(houseName, HouseNumber, Street, Location, Town, County)
+                    {
+                        Address1 = houseName;
+                        Address2 = HouseNumber;
+                        Address3 = Street;
+                        Address4 = Location;
+                        Address5 = Town;
+                        Address6 = County;
+                    }
 
-        public AddressNameNumber(IAddressLines address) : base(address)
+                /// <summary>
+                ///     Constructor
+                /// </summary>
+                /// <param name="address"></param>
+                public AddressNameNumber(IAddressLines address) : base(address)
                     {
                     }
 
+                /// <summary>
+                ///     Constructor
+                /// </summary>
+                /// <param name="address"></param>
                 public AddressNameNumber(IAddressNameNumber address) : base(address)
                     {
                     }
 
+                /// <summary>
+                ///     Constructor
+                /// </summary>
+                /// <param name="address"></param>
                 public AddressNameNumber(IAddressNamed address) : base(address)
                     {
                     }

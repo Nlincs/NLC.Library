@@ -1,20 +1,20 @@
 //  --------------------------------------------------------------------------------------------------------------------
 //  <copyright file=USRN.cs company="North Lincolnshire Council">
-//  Solution : -  Library
+//  Solution : -  NLC.Library
 // 
 //  </copyright>
 //  <summary>
 // 
-//  Created - 03/07/2020 17:11
-//  Altered - 06/07/2020 12:52 - Stephen Ellwood
+//  Created - 17/03/2021 17:48
+//  Altered - 25/04/2022 12:16 - Stephen Ellwood
 // 
-//  Project : - Library
+//  Project : - NLC.Library
 // 
 //  </summary>
 //  --------------------------------------------------------------------------------------------------------------------
 
-using System.Xml.Serialization;
 using NLC.Library.Interfaces;
+using System.Xml.Serialization;
 
 namespace NLC.Library
     {
@@ -69,7 +69,7 @@ namespace NLC.Library
                         else
                             {
                                 if (long.TryParse(usrn.Trim(),
-                                    out var value))
+                                        out var value))
                                     {
                                         UsrnValue = value;
                                     }
@@ -180,13 +180,12 @@ namespace NLC.Library
 
 
                         if (long.TryParse(usrn,
-                            out var value))
+                                out var value))
                             {
                                 return value >= 1;
                             }
 
                         return false;
                     }
-
             }
     }

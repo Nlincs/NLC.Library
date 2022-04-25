@@ -70,7 +70,7 @@ namespace NLC.Library.Tests.Extensions
                         var actual = list99.SplitToBuckets(10);
 
                         Assert.That(actual, Is.Not.Null);
-                        Assert.That(actual.Count(), Is.EqualTo(10));
+                        Assert.That(actual.Count, Is.EqualTo(10));
                         CollectionAssert.AllItemsAreNotNull(actual);
 
                         var max = 0;
@@ -82,11 +82,11 @@ namespace NLC.Library.Tests.Extensions
                                 min = Math.Min(min, sublist.Count);
                             }
 
-                        // sublists should be length 9 or 10
+                        // sub lists should be length 9 or 10
                         Assert.That(max, Is.EqualTo(10));
                         Assert.That(min, Is.EqualTo(9));
 
-                        // should be one sublist of length 9 and rest should be 10
+                        // should be one sub list of length 9 and rest should be 10
                         var len10 = actual.FindAll(x => x.Count == 10);
                         var len9 = actual.FindAll(x => x.Count == 9);
 

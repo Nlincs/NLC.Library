@@ -69,15 +69,15 @@ namespace NLC.Library.Tests
                     {
                         var sut = CreateSimplePerson();
 
-                        var title = "Ms";
-                        var forname = "somebody";
-                        var surname = "Surname";
+                        const string title = "Ms";
+                        const string forename = "somebody";
+                        const string surname = "Surname";
 
                         sut.Title = title;
-                        sut.Forename = forname;
+                        sut.Forename = forename;
                         sut.Surname = surname;
 
-                        var expected = title + " " + forname + " " + surname;
+                        var expected = title + " " + forename + " " + surname;
 
                         var actual = sut.FullName;
 
@@ -111,7 +111,7 @@ namespace NLC.Library.Tests
                         sut.Forename = null;
                         sut.Surname = null;
 
-                        var expected = "";
+                        const string expected = "";
 
                         var actual = sut.FullName;
 

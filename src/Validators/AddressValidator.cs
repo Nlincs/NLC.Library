@@ -1,14 +1,14 @@
 //  --------------------------------------------------------------------------------------------------------------------
 //  <copyright file=AddressValidator.cs company="North Lincolnshire Council">
-//  Solution : -  Library
+//  Solution : -  NLC.Library
 // 
 //  </copyright>
 //  <summary>
 // 
-//  Created - 09/10/2020 11:11
-//  Altered - 09/10/2020 11:11 - Stephen Ellwood
+//  Created - 17/03/2021 17:48
+//  Altered - 25/04/2022 12:16 - Stephen Ellwood
 // 
-//  Project : - Library
+//  Project : - NLC.Library
 // 
 //  </summary>
 //  --------------------------------------------------------------------------------------------------------------------
@@ -19,7 +19,7 @@ namespace NLC.Library.Validators
         ///     Validate address
         /// </summary>
         /// <remarks>determines if address is empty</remarks>
-        public class AddressValidator: IAddressValidator
+        public class AddressValidator : IAddressValidator
             {
                 #region Implementation of IAddressValidator
 
@@ -36,12 +36,12 @@ namespace NLC.Library.Validators
                     string address5, string address6)
                     {
                         var checkAddress = new AddressLines(address1,
-                                address2,
-                                address3,
-                                address4,
-                                address5,
-                                address6
-                            );
+                            address2,
+                            address3,
+                            address4,
+                            address5,
+                            address6
+                        );
                         return !checkAddress.IsEmptyAddress();
                     }
 

@@ -1,14 +1,14 @@
 //  --------------------------------------------------------------------------------------------------------------------
 //  <copyright file=ILocation.cs company="North Lincolnshire Council">
-//  Solution : -  Library
+//  Solution : -  NLC.Library
 // 
 //  </copyright>
 //  <summary>
 // 
-//  Created - 08/07/2020 11:33
-//  Altered - 09/10/2020 10:08 - Stephen Ellwood
+//  Created - 07/12/2021 09:27
+//  Altered - 25/04/2022 12:16 - Stephen Ellwood
 // 
-//  Project : - Library
+//  Project : - NLC.Library
 // 
 //  </summary>
 //  --------------------------------------------------------------------------------------------------------------------
@@ -40,6 +40,5 @@ namespace NLC.Library.Interfaces
                 /// <summary>
                 /// </summary>
                 double? Northing { get; set; }
-
             }
     }

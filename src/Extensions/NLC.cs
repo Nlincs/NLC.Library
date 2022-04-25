@@ -1,14 +1,14 @@
 //  --------------------------------------------------------------------------------------------------------------------
 //  <copyright file=NLC.cs company="North Lincolnshire Council">
-//  Solution : -  Library
+//  Solution : -  NLC.Library
 // 
 //  </copyright>
 //  <summary>
 // 
-//  Created - 06/07/2020 10:01
-//  Altered - 06/07/2020 12:20 - Stephen Ellwood
+//  Created - 17/03/2021 17:48
+//  Altered - 25/04/2022 12:15 - Stephen Ellwood
 // 
-//  Project : - Library
+//  Project : - NLC.Library
 // 
 //  </summary>
 //  --------------------------------------------------------------------------------------------------------------------
@@ -34,7 +34,6 @@ namespace NLC.Library.Extensions
                 /// <remarks></remarks>
                 public static bool? IsValidCrmNumber(this string crmNumber)
                     {
-
                         // Throw New NotImplementedException
                         var result = true;
 
@@ -86,7 +85,7 @@ namespace NLC.Library.Extensions
                         // what's left should be numeric
 
                         if (long.TryParse(crmNumber,
-                            out _))
+                                out _))
                             {
                                 // we have success
                             }

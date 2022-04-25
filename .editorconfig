@@ -16,7 +16,7 @@ insert_final_newline = false
 resharper_case_block_braces = next_line_shifted_2
 resharper_csharp_anonymous_method_declaration_braces = next_line_shifted_2
 resharper_csharp_invocable_declaration_braces = next_line_shifted_2
-resharper_csharp_naming_rule.private_instance_fields =_ + aaBb, aaBb
+resharper_csharp_naming_rule.private_instance_fields = _ + aaBb, aaBb
 resharper_csharp_other_braces = next_line_shifted_2
 resharper_csharp_type_declaration_braces = next_line_shifted_2
 resharper_initializer_braces = next_line_shifted_2
@@ -118,7 +118,7 @@ csharp_style_conditional_delegate_call = true:suggestion
 
 # Modifier preferences
 csharp_prefer_static_local_function = false:suggestion
-csharp_preferred_modifier_order = public,private,protected,internal,static,extern,new,virtual,abstract,sealed,override,readonly,unsafe,volatile,async
+csharp_preferred_modifier_order = public, private, protected, internal, static, extern, new, virtual, abstract, sealed, override, readonly, unsafe, volatile, async
 
 # Code-block preferences
 csharp_prefer_braces = true:silent
@@ -219,15 +219,15 @@ dotnet_naming_rule.private_static_readonly_rule.symbols = private_static_readonl
 
 dotnet_naming_symbols.interface.applicable_kinds = interface
 dotnet_naming_symbols.interface.applicable_accessibilities = public, internal, private, protected, protected_internal, private_protected
-dotnet_naming_symbols.interface.required_modifiers = 
+dotnet_naming_symbols.interface.required_modifiers =
 
 dotnet_naming_symbols.types.applicable_kinds = class, struct, interface, enum
 dotnet_naming_symbols.types.applicable_accessibilities = public, internal, private, protected, protected_internal, private_protected
-dotnet_naming_symbols.types.required_modifiers = 
+dotnet_naming_symbols.types.required_modifiers =
 
 dotnet_naming_symbols.non_field_members.applicable_kinds = property, event, method
 dotnet_naming_symbols.non_field_members.applicable_accessibilities = public, internal, private, protected, protected_internal, private_protected
-dotnet_naming_symbols.non_field_members.required_modifiers = 
+dotnet_naming_symbols.non_field_members.required_modifiers =
 
 # Resharper naming system
 
@@ -241,24 +241,24 @@ dotnet_naming_symbols.private_static_fields_symbols.applicable_kinds = field
 dotnet_naming_symbols.private_static_fields_symbols.required_modifiers = static
 dotnet_naming_symbols.private_static_readonly_symbols.applicable_accessibilities = private
 dotnet_naming_symbols.private_static_readonly_symbols.applicable_kinds = field
-dotnet_naming_symbols.private_static_readonly_symbols.required_modifiers = static,readonly
+dotnet_naming_symbols.private_static_readonly_symbols.required_modifiers = static, readonly
 
 # Naming styles
 
-dotnet_naming_style.pascal_case.required_prefix = 
-dotnet_naming_style.pascal_case.required_suffix = 
-dotnet_naming_style.pascal_case.word_separator = 
+dotnet_naming_style.pascal_case.required_prefix =
+dotnet_naming_style.pascal_case.required_suffix =
+dotnet_naming_style.pascal_case.word_separator =
 dotnet_naming_style.pascal_case.capitalization = pascal_case
 
 dotnet_naming_style.begins_with_i.required_prefix = I
-dotnet_naming_style.begins_with_i.required_suffix = 
-dotnet_naming_style.begins_with_i.word_separator = 
+dotnet_naming_style.begins_with_i.required_suffix =
+dotnet_naming_style.begins_with_i.word_separator =
 dotnet_naming_style.begins_with_i.capitalization = pascal_case
 
 # Resharper naming styles
 
 dotnet_naming_style.lower_camel_case_style.capitalization = camel_case
-dotnet_naming_style.lower_camel_case_style.required_prefix =_
+dotnet_naming_style.lower_camel_case_style.required_prefix = _
 dotnet_naming_style.upper_camel_case_style.capitalization = pascal_case
 
 
@@ -324,7 +324,7 @@ dotnet_code_quality_unused_parameters = all:suggestion
 #### VB Coding Conventions ####
 
 # Modifier preferences
-visual_basic_preferred_modifier_order = partial,default,private,protected,public,friend,notoverridable,overridable,mustoverride,overloads,overrides,mustinherit,notinheritable,static,shared,shadows,readonly,writeonly,dim,const,withevents,widening,narrowing,custom,async,iterator
+visual_basic_preferred_modifier_order = partial, default, private, protected, public, friend, notoverridable, overridable, mustoverride, overloads, overrides, mustinherit, notinheritable, static, shared, shadows, readonly, writeonly, dim, const, withevents, widening, narrowing, custom, async, iterator
 
 # Expression-level preferences
 visual_basic_style_unused_value_assignment_preference = unused_local_variable:suggestion
@@ -350,40 +350,40 @@ dotnet_naming_rule.non_field_members_should_be_pascal_case.style = pascal_case
 
 dotnet_naming_symbols.interface.applicable_kinds = interface
 dotnet_naming_symbols.interface.applicable_accessibilities = public, friend, private, protected, protected_friend, private_protected
-dotnet_naming_symbols.interface.required_modifiers = 
+dotnet_naming_symbols.interface.required_modifiers =
 
 dotnet_naming_symbols.types.applicable_kinds = class, struct, interface, enum
 dotnet_naming_symbols.types.applicable_accessibilities = public, friend, private, protected, protected_friend, private_protected
-dotnet_naming_symbols.types.required_modifiers = 
+dotnet_naming_symbols.types.required_modifiers =
 
 dotnet_naming_symbols.non_field_members.applicable_kinds = property, event, method
 dotnet_naming_symbols.non_field_members.applicable_accessibilities = public, friend, private, protected, protected_friend, private_protected
-dotnet_naming_symbols.non_field_members.required_modifiers = 
+dotnet_naming_symbols.non_field_members.required_modifiers =
 
 # Naming styles
 
-dotnet_naming_style.pascal_case.required_prefix = 
-dotnet_naming_style.pascal_case.required_suffix = 
-dotnet_naming_style.pascal_case.word_separator = 
+dotnet_naming_style.pascal_case.required_prefix =
+dotnet_naming_style.pascal_case.required_suffix =
+dotnet_naming_style.pascal_case.word_separator =
 dotnet_naming_style.pascal_case.capitalization = pascal_case
 
 dotnet_naming_style.begins_with_i.required_prefix = I
-dotnet_naming_style.begins_with_i.required_suffix = 
-dotnet_naming_style.begins_with_i.word_separator = 
+dotnet_naming_style.begins_with_i.required_suffix =
+dotnet_naming_style.begins_with_i.word_separator =
 dotnet_naming_style.begins_with_i.capitalization = pascal_case
 
 
 [*.{c,c++,cc,cp,cpp,cu,cuh,cxx,h,hh,hpp,hxx,inc,inl,ino,ipp,mpp,proto,tpp}]
-indent_style=tab
-indent_size=tab
-tab_width=4
+indent_style = tab
+indent_size = tab
+tab_width = 4
 
 [*.{appxmanifest,asax,ascx,aspx,axml,build,config,cs,cshtml,csproj,css,dbml,discomap,dtd,htm,html,js,jsproj,jsx,lsproj,master,njsproj,nuspec,proj,props,razor,resw,resx,skin,StyleCop,targets,tasks,ts,tsx,vb,vbproj,xaml,xamlx,xml,xoml,xsd}]
-indent_style=space
-indent_size=4
-tab_width=4
+indent_style = space
+indent_size = 4
+tab_width = 4
 
 [*.{json,resjson}]
-indent_style=space
-indent_size=2
-tab_width=2
+indent_style = space
+indent_size = 2
+tab_width = 2

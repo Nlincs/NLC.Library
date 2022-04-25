@@ -1,14 +1,14 @@
 //  --------------------------------------------------------------------------------------------------------------------
 //  <copyright file=DateTimeExtensions.cs company="North Lincolnshire Council">
-//  Solution : -  Library
+//  Solution : -  NLC.Library
 // 
 //  </copyright>
 //  <summary>
 // 
-//  Created - 07/07/2020 09:49
-//  Altered - 07/07/2020 10:47 - Stephen Ellwood
+//  Created - 17/03/2021 17:48
+//  Altered - 25/04/2022 12:15 - Stephen Ellwood
 // 
-//  Project : - Library
+//  Project : - NLC.Library
 // 
 //  </summary>
 //  --------------------------------------------------------------------------------------------------------------------
@@ -91,7 +91,7 @@ namespace NLC.Library.Extensions
                 /// </remarks>
                 public static bool IsEnglishBankHolidayWeek(this DateTime date)
                     {
-                     // first calculate the monday
+                        // first calculate the monday
                         DateTime monday;
 
                         if (date.DayOfWeek == DayOfWeek.Monday)
@@ -202,14 +202,14 @@ namespace NLC.Library.Extensions
                         var c = yr / 100;
                         var n = yr - (19 * (yr / 19));
                         var k = (c - 17) / 25;
-                        var I = (c - (c / 4) - ((c - k) / 3)) + (19 * n) + 15;
+                        var I = c - (c / 4) - ((c - k) / 3) + (19 * n) + 15;
                         I -= 30 * (I / 30);
-                        I -= (I / 28) * (1 - ((I / 28) * (29 / (I + 1)) * ((21 - n) / 11)));
-                        var j = ((yr + (yr / 4) + I + 2) - c) + (c / 4);
+                        I -= I / 28 * (1 - (I / 28 * (29 / (I + 1)) * ((21 - n) / 11)));
+                        var j = yr + (yr / 4) + I + 2 - c + (c / 4);
                         j -= 7 * (j / 7);
                         var l = I - j;
                         var m = 3 + ((l + 40) / 44);
-                        var d = (l + 28) - (31 * (m / 4));
+                        var d = l + 28 - (31 * (m / 4));
 
                         return new DateTime((int)yr,
                             (int)m,
@@ -438,9 +438,7 @@ namespace NLC.Library.Extensions
                         if (endDate < startDate)
                             {
                                 // swap around
-                                var tmp = startDate;
-                                startDate = endDate;
-                                endDate = tmp;
+                                (startDate, endDate) = (endDate, startDate);
                             }
 
                         try
@@ -650,7 +648,6 @@ namespace NLC.Library.Extensions
                 /// </remarks>
                 public static bool IsUkWorkingDay(this DateTime date)
                     {
-                  
                         var isUkBankHoliday = IsUkBankHoliday(date);
                         if (isUkBankHoliday != null && (bool)isUkBankHoliday)
                             {

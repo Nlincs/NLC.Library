@@ -36,7 +36,7 @@ namespace NLC.Library.Tests
 
                 [Test]
                 [Combinatorial]
-                public void CrmReferenceIsInequal(
+                public void CrmReferenceIs_NotEqual(
                     [Values(1, 2, 3)] int x,
                     [Values("", "12")] string s)
                     {
@@ -77,7 +77,7 @@ namespace NLC.Library.Tests
                     }
 
                 [Test]
-                public void IsValid_StateUnderTest_ExpectedBehavior()
+                public void IsValid_StateUnderTest_Expected_Behaviour()
                     {
                         // Arrange
                         var sut = CreateCrmReference();
