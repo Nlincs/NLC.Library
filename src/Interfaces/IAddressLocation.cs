@@ -5,8 +5,8 @@
 //  </copyright>
 //  <summary>
 // 
-//  Created - 19/10/2020 14:09
-//  Altered - 19/10/2020 14:09 - Stephen Ellwood
+//  Created - 17/03/2021 17:48
+//  Altered - 25/04/2022 12:16 - Stephen Ellwood
 // 
 //  Project : - NLC.Library
 // 
@@ -20,6 +20,5 @@ namespace NLC.Library.Interfaces
         /// </summary>
         public interface IAddressLocation : IAddress, ILocation
             {
-
             }
     }

@@ -5,8 +5,8 @@
 //  </copyright>
 //  <summary>
 // 
-//  Created - 15/10/2020 14:54
-//  Altered - 15/10/2020 16:55 - Stephen Ellwood
+//  Created - 17/03/2021 17:48
+//  Altered - 25/04/2022 12:16 - Stephen Ellwood
 // 
 //  Project : - NLC.Library
 // 
@@ -28,44 +28,44 @@ namespace NLC.Library.Interfaces
                 /// <summary>
                 /// </summary>
                 /// <remarks>
-                /// HouseName,
-                /// Primary Address
+                ///     HouseName,
+                ///     Primary Address
                 /// </remarks>
                 string Address1 { get; set; }
 
                 /// <summary>
                 /// </summary>
                 /// <remarks>
-                /// HouseNumber,
-                /// Secondary Address
+                ///     HouseNumber,
+                ///     Secondary Address
                 /// </remarks>
                 string Address2 { get; set; }
 
                 /// <summary>
                 /// </summary>
                 /// <remarks>
-                /// Street
+                ///     Street
                 /// </remarks>
                 string Address3 { get; set; }
 
                 /// <summary>
                 /// </summary>
                 /// <remarks>
-                /// Location
+                ///     Location
                 /// </remarks>
                 string Address4 { get; set; }
 
                 /// <summary>
                 /// </summary>
                 /// <remarks>
-                /// Town
+                ///     Town
                 /// </remarks>
                 string Address5 { get; set; }
 
                 /// <summary>
                 /// </summary>
                 /// <remarks>
-                /// County
+                ///     County
                 /// </remarks>
                 string Address6 { get; set; }
 

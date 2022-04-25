@@ -67,7 +67,7 @@ namespace NLC.Library.Tests.Extensions
                 [Category("Date")]
                 public void CheckEasterFalse()
                     {
-                        //Checks the formula and ensure easter returns false when inplemented (dates aren't easter)
+                        //Checks the formula and ensure easter returns false when implemented (dates aren't easter)
                         //Check 1943, 1996, 2008 and 2060
 
                         //1943
@@ -112,7 +112,7 @@ namespace NLC.Library.Tests.Extensions
                 [Category("Date")]
                 public void CheckEasterTrue()
                     {
-                        //Checks the formula and ensure easter returns true when inplemented (dates are easter)
+                        //Checks the formula and ensure easter returns true when implemented (dates are easter)
                         //Check 1943, 1996, 2008 and 2060
 
                         //1943
@@ -755,8 +755,7 @@ namespace NLC.Library.Tests.Extensions
                             6,
                             5);
                         const bool expected = true;
-                        bool? actual;
-                        actual = testDate.IsUkBankHoliday();
+                        var actual = testDate.IsUkBankHoliday();
                         Assert.AreEqual(expected,
                             actual);
                     }

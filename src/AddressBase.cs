@@ -5,8 +5,8 @@
 //  </copyright>
 //  <summary>
 // 
-//  Created - 17/12/2020 16:18
-//  Altered - 17/12/2020 17:38 - Stephen Ellwood
+//  Created - 07/12/2021 09:27
+//  Altered - 25/04/2022 12:15 - Stephen Ellwood
 // 
 //  Project : - NLC.Library
 // 
@@ -30,6 +30,11 @@ namespace NLC.Library
                 private string _address5;
                 private string _address6;
 
+
+                /// <summary>
+                ///     Constructor
+                /// </summary>
+                /// <param name="address"></param>
                 protected AddressBase(IAddressLines address)
                     {
                         OriginalAddress = address;
@@ -42,6 +47,10 @@ namespace NLC.Library
                         Address6 = address.AddressLine6;
                     }
 
+                /// <summary>
+                ///     Constructor
+                /// </summary>
+                /// <param name="address"></param>
                 protected AddressBase(IAddressNameNumber address)
                     {
                         OriginalAddress = address;
@@ -54,6 +63,10 @@ namespace NLC.Library
                         Address6 = address.County;
                     }
 
+                /// <summary>
+                ///     Constructor
+                /// </summary>
+                /// <param name="address"></param>
                 protected AddressBase(IAddressNamed address)
                     {
                         OriginalAddress = address;
@@ -66,6 +79,15 @@ namespace NLC.Library
                         Address6 = address.County;
                     }
 
+                /// <summary>
+                ///     Constructor
+                /// </summary>
+                /// <param name="address1"></param>
+                /// <param name="address2"></param>
+                /// <param name="address3"></param>
+                /// <param name="address4"></param>
+                /// <param name="address5"></param>
+                /// <param name="address6"></param>
                 protected AddressBase(string address1, string address2, string address3, string address4,
                     string address5, string address6)
                     {
@@ -77,6 +99,9 @@ namespace NLC.Library
                         _address6 = address6;
                     }
 
+                /// <summary>
+                ///     Constructor
+                /// </summary>
                 protected AddressBase()
                     {
                         var defaultAddress = "";
@@ -109,6 +134,7 @@ namespace NLC.Library
                     FullAddress(address.Address1, address.Address2, address.Address3, address.Address4,
                         address.Address5, address.Address6);
 
+                /// <inheritdoc />
                 public string FullAddress(string line1, string line2, string line3, string line4,
                     string line5, string line6) => FullAddress(line1, line2, line3, line4, line5, line6, true);
 
@@ -125,6 +151,7 @@ namespace NLC.Library
                 /// <inheritdoc />
                 public IUsrn Usrn { get; set; }
 
+                /// <inheritdoc />
                 public IPostCode PostCode { get; set; }
 
                 /// <inheritdoc />
@@ -434,6 +461,7 @@ namespace NLC.Library
                                     Address4 = tempAddress[3].Trim();
                                     Address5 = tempAddress[4].Trim();
                                     Address6 = tempAddress[5].Trim();
+
                                     break;
                             }
 

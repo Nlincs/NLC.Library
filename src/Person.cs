@@ -1,14 +1,14 @@
 //  --------------------------------------------------------------------------------------------------------------------
-//  <copyright file=SimplePerson.cs company="North Lincolnshire Council">
-//  Solution : -  Library
+//  <copyright file=Person.cs company="North Lincolnshire Council">
+//  Solution : -  NLC.Library
 // 
 //  </copyright>
 //  <summary>
 // 
-//  Created - 06/07/2020 10:01
-//  Altered - 06/07/2020 12:48 - Stephen Ellwood
+//  Created - 17/03/2021 17:48
+//  Altered - 25/04/2022 12:16 - Stephen Ellwood
 // 
-//  Project : - Library
+//  Project : - NLC.Library
 // 
 //  </summary>
 //  --------------------------------------------------------------------------------------------------------------------
@@ -90,13 +90,16 @@ namespace NLC.Library
                     set => FamilyName = value;
                 }
 
-
+                /// <summary>
+                /// </summary>
                 public string Forename
                 {
                     get => GivenName;
                     set => GivenName = value;
                 }
 
+                /// <summary>
+                /// </summary>
                 public string Forenames
                 {
                     get => GivenName;

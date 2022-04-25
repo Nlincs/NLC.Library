@@ -1,14 +1,14 @@
 //  --------------------------------------------------------------------------------------------------------------------
 //  <copyright file=PersonValidator.cs company="North Lincolnshire Council">
-//  Solution : -  Library
+//  Solution : -  NLC.Library
 // 
 //  </copyright>
 //  <summary>
 // 
-//  Created - 06/07/2020 10:01
-//  Altered - 06/07/2020 12:35 - Stephen Ellwood
+//  Created - 17/03/2021 17:48
+//  Altered - 25/04/2022 12:17 - Stephen Ellwood
 // 
-//  Project : - Library
+//  Project : - NLC.Library
 // 
 //  </summary>
 //  --------------------------------------------------------------------------------------------------------------------
@@ -30,7 +30,7 @@ namespace NLC.Library.Validators
                 /// <inheritdoc />
                 public bool ValidPerson(string surname, string forename)
                     {
-                        var person = new Person {FamilyName = surname, GivenName = forename};
+                        var person = new Person { FamilyName = surname, GivenName = forename };
                         return person.IsValid();
                     }
             }

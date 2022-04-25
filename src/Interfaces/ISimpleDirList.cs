@@ -5,17 +5,17 @@
 //  </copyright>
 //  <summary>
 // 
-//  Created - 13/10/2020 16:35
-//  Altered - 14/10/2020 11:11 - Stephen Ellwood
+//  Created - 17/03/2021 17:48
+//  Altered - 25/04/2022 12:16 - Stephen Ellwood
 // 
 //  Project : - NLC.Library
 // 
 //  </summary>
 //  --------------------------------------------------------------------------------------------------------------------
 
+using NLC.Library.Enums;
 using System.Collections.Generic;
 using System.IO;
-using NLC.Library.Enums;
 
 namespace NLC.Library.Interfaces
     {

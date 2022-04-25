@@ -1,14 +1,14 @@
 //  --------------------------------------------------------------------------------------------------------------------
 //  <copyright file=IUPRN.cs company="North Lincolnshire Council">
-//  Solution : -  Library
+//  Solution : -  NLC.Library
 // 
 //  </copyright>
 //  <summary>
 // 
-//  Created - 12/06/2020 15:28
-//  Altered - 12/06/2020 15:28 - Stephen Ellwood
+//  Created - 17/03/2021 17:48
+//  Altered - 25/04/2022 12:16 - Stephen Ellwood
 // 
-//  Project : - Library
+//  Project : - NLC.Library
 // 
 //  </summary>
 //  --------------------------------------------------------------------------------------------------------------------
@@ -18,7 +18,7 @@ namespace NLC.Library.Interfaces
         /// <summary>
         ///     The UPRN interface.
         /// </summary>
-        public interface IUprn 
+        public interface IUprn
             {
                 /// <summary>
                 ///     Numeric value of the UPRN
@@ -41,7 +41,7 @@ namespace NLC.Library.Interfaces
                 /// <returns>True if the uprn is a street record, false otherwise</returns>
                 /// <remarks>This may only apply in NLC</remarks>
                 bool IsStreet();
-        
+
                 /// <summary>
                 ///     IsValid
                 /// </summary>

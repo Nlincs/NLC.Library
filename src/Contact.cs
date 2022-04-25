@@ -5,8 +5,8 @@
 //  </copyright>
 //  <summary>
 // 
-//  Created - 19/10/2020 15:10
-//  Altered - 16/12/2020 15:09 - Stephen Ellwood
+//  Created - 17/03/2021 17:48
+//  Altered - 25/04/2022 12:15 - Stephen Ellwood
 // 
 //  Project : - NLC.Library
 // 
@@ -25,10 +25,17 @@ namespace NLC.Library
         /// </remarks>
         public class Contact : IContact
             {
+                /// <summary>
+                ///     Constructor
+                /// </summary>
                 public Contact()
                     {
                     }
 
+                /// <summary>
+                ///     Constructor
+                /// </summary>
+                /// <param name="address"></param>
                 public Contact(IFullAddress address) => Address = address;
 
                 #region Implementation of IFullContact
@@ -39,6 +46,7 @@ namespace NLC.Library
                 /// <inheritdoc />
                 public IFullAddress Address { get; set; }
 
+                /// <inheritdoc />
                 public bool IsAnonymous { get; set; }
 
                 /// <inheritdoc />

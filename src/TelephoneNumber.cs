@@ -5,8 +5,8 @@
 //  </copyright>
 //  <summary>
 // 
-//  Created - 13/10/2020 16:36
-//  Altered - 16/12/2020 16:08 - Stephen Ellwood
+//  Created - 17/03/2021 17:48
+//  Altered - 25/04/2022 12:16 - Stephen Ellwood
 // 
 //  Project : - NLC.Library
 // 
@@ -33,33 +33,33 @@ namespace NLC.Library
                 private PhoneNumberUtil _phoneNumberUtil;
 
                 /// <summary>
-                ///     Initializes a new instance of the <see cref="TelephoneNumber" /> class.
+                ///     Initialises a new instance of the <see cref="TelephoneNumber" /> class.
                 /// </summary>
                 public TelephoneNumber()
                     {
-                        originalNumber = "";
+                        OriginalNumber = "";
                         Setup();
                     }
 
                 /// <summary>
-                ///     Initializes a new instance of the <see cref="TelephoneNumber" /> class.
+                ///     Initialises a new instance of the <see cref="TelephoneNumber" /> class.
                 /// </summary>
                 /// <param name="telephoneNumber">The telephone number.</param>
                 public TelephoneNumber(string telephoneNumber)
                     {
-                        originalNumber = telephoneNumber;
+                        OriginalNumber = telephoneNumber;
                         Setup();
                         NationalNumber = telephoneNumber == null ? string.Empty : telephoneNumber.Trim();
                     }
 
                 /// <summary>
-                ///     Initializes a new instance of the <see cref="TelephoneNumber" /> class.
+                ///     Initialises a new instance of the <see cref="TelephoneNumber" /> class.
                 /// </summary>
                 /// <param name="telephoneNumber">The telephone number.</param>
                 /// <param name="isoCountryCode"></param>
                 public TelephoneNumber(string telephoneNumber, string isoCountryCode)
                     {
-                        originalNumber = telephoneNumber;
+                        OriginalNumber = telephoneNumber;
                         IsoCountryCode = isoCountryCode;
                         Setup();
                         NationalNumber = telephoneNumber == null ? string.Empty : telephoneNumber.Trim();
@@ -68,12 +68,15 @@ namespace NLC.Library
                 /// <summary>
                 ///     Stores original number passed in
                 /// </summary>
-                private string originalNumber { get; set; }
+                private string OriginalNumber { get; set; }
 
-
+                /// <summary>
+                /// </summary>
                 public string IsoCountryCode { get; set; } = "GB";
 
-                private PhoneNumber phoneNumber { get; set; }
+                /// <summary>
+                /// </summary>
+                private PhoneNumber PhoneNumber { get; set; }
 
                 /// <summary>
                 ///     Value of phone number
@@ -82,16 +85,17 @@ namespace NLC.Library
                 {
                     get
                     {
-                        if (phoneNumber == null)
+                        if (PhoneNumber == null)
                             {
                                 return "";
                             }
 
-                        var result = phoneNumber.NationalNumber.ToString();
+                        var result = PhoneNumber.NationalNumber.ToString();
                         if (result.Length < 1)
                             {
                                 return "";
                             }
+
                         // restore leading 0 if it was in the original
                         if (OriginalHasLeadingZero())
                             {
@@ -103,18 +107,18 @@ namespace NLC.Library
 
                     set
                     {
-                        if (originalNumber == null || originalNumber.Trim() == "")
+                        if (OriginalNumber == null || OriginalNumber.Trim() == "")
                             {
-                                originalNumber = value;
+                                OriginalNumber = value;
                             }
 
                         try
                             {
-                                phoneNumber = _phoneNumberUtil.Parse(value, IsoCountryCode);
+                                PhoneNumber = _phoneNumberUtil.Parse(value, IsoCountryCode);
                             }
                         catch
                             {
-                                phoneNumber = null;
+                                PhoneNumber = null;
                             }
                     }
                 }
@@ -127,7 +131,7 @@ namespace NLC.Library
                 /// <remarks>+44 for UK</remarks>
                 public string CountryCode
                 {
-                    get => phoneNumber == null ? "" : phoneNumber.CountryCode.ToString();
+                    get => PhoneNumber == null ? "" : PhoneNumber.CountryCode.ToString();
                     set => throw new NotImplementedException();
                 }
 
@@ -139,7 +143,7 @@ namespace NLC.Library
                 /// </value>
                 public string ExtensionNumber
                 {
-                    get => phoneNumber == null ? "" : phoneNumber.Extension;
+                    get => PhoneNumber == null ? "" : PhoneNumber.Extension;
                     set => throw new NotImplementedException();
                 }
 
@@ -151,16 +155,16 @@ namespace NLC.Library
                 /// <remarks>This should be the full national number i.e. with no leading 0</remarks>
                 public string NationalNumber
                 {
-                    get => phoneNumber == null ? "" : phoneNumber.NationalNumber.ToString();
+                    get => PhoneNumber == null ? "" : PhoneNumber.NationalNumber.ToString();
                     set
                     {
                         try
                             {
-                                phoneNumber = _phoneNumberUtil.Parse(value, IsoCountryCode);
+                                PhoneNumber = _phoneNumberUtil.Parse(value, IsoCountryCode);
                             }
                         catch
                             {
-                                phoneNumber = null;
+                                PhoneNumber = null;
                             }
                     }
                 }
@@ -170,23 +174,18 @@ namespace NLC.Library
                 {
                     get
                     {
-                        if (phoneNumber == null)
-                            {
-                                return false;
-                            }
-
-                        return _phoneNumberUtil.IsValidNumber(phoneNumber);
+                        return PhoneNumber != null && _phoneNumberUtil.IsValidNumber(PhoneNumber);
                     }
                 }
 
                 private bool OriginalHasLeadingZero()
                     {
-                        if (originalNumber == null || originalNumber.Length <= 1)
+                        if (OriginalNumber == null || OriginalNumber.Length <= 1)
                             {
                                 return false;
                             }
 
-                        return originalNumber.Trim().Substring(0, 1) == "0";
+                        return OriginalNumber.Trim().Substring(0, 1) == "0";
                     }
 
 

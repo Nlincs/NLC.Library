@@ -5,8 +5,8 @@
 //  </copyright>
 //  <summary>
 // 
-//  Created - 13/10/2020 16:36
-//  Altered - 16/10/2020 14:43 - Stephen Ellwood
+//  Created - 17/03/2021 17:48
+//  Altered - 25/04/2022 12:15 - Stephen Ellwood
 // 
 //  Project : - NLC.Library
 // 
@@ -21,24 +21,46 @@ namespace NLC.Library
         /// </summary>
         public sealed class AddressNamed : AddressBase, IAddressNamed
             {
-        public AddressNamed(string PrimaryAddress, string SecondaryAddress, string Street, string Location, string Town, string County):base(PrimaryAddress, SecondaryAddress, Street, Location, Town, County)
-            {
-                Address1 = PrimaryAddress;
-                Address2 = SecondaryAddress;
-                Address3 = Street;
-                Address4 = Location;
-                Address5 = Town;
-                Address6 = County;
-            }
+                /// <summary>
+                ///     Constructor
+                /// </summary>
+                /// <param name="primaryAddress"></param>
+                /// <param name="secondaryAddress"></param>
+                /// <param name="street"></param>
+                /// <param name="location"></param>
+                /// <param name="town"></param>
+                /// <param name="county"></param>
+                public AddressNamed(string primaryAddress, string secondaryAddress, string street, string location, string
+                    town, string county):base(primaryAddress, secondaryAddress, street, location, town, county)
+                    {
+                        Address1 = primaryAddress;
+                        Address2 = secondaryAddress;
+                        Address3 = street;
+                        Address4 = location;
+                        Address5 = town;
+                        Address6 = county;
+                    }
 
-        public AddressNamed(IAddressLines address) : base(address)
+                /// <summary>
+                ///     Constructor
+                /// </summary>
+                /// <param name="address"></param>
+                public AddressNamed(IAddressLines address) : base(address)
                     {
                     }
 
+                /// <summary>
+                ///     Constructor
+                /// </summary>
+                /// <param name="address"></param>
                 public AddressNamed(IAddressNameNumber address) : base(address)
                     {
                     }
 
+                /// <summary>
+                ///     Constructor
+                /// </summary>
+                /// <param name="address"></param>
                 public AddressNamed(IAddressNamed address) : base(address)
                     {
                     }

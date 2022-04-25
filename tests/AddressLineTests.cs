@@ -30,7 +30,7 @@ namespace NLC.Library.Tests
 
                 private MockRepository _mockRepository;
 
-                private AddressLines CreateSimpleAddressLine() => new AddressLines(null, null, null, null, null, null);
+                private static AddressLines CreateSimpleAddressLine() => new AddressLines(null, null, null, null, null, null);
 
                 [Test]
                 public void CheckInterfaces()

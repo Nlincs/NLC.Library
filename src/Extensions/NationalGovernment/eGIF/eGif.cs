@@ -5,8 +5,8 @@
 //  </copyright>
 //  <summary>
 // 
-//  Created - 13/10/2020 16:35
-//  Altered - 19/10/2020 09:47 - Stephen Ellwood
+//  Created - 17/03/2021 17:48
+//  Altered - 25/04/2022 12:15 - Stephen Ellwood
 // 
 //  Project : - NLC.Library
 // 
@@ -155,7 +155,7 @@ namespace NLC.Library.Extensions.NationalGovernment.eGIF
                         var d = date.Substring(date.Length - 2);
 
                         if (int.TryParse(y,
-                            out var iy))
+                                out var iy))
                             {
                                 // iy has a valid integer representing the year
                                 if (iy < 1900 || iy > DateTime.Now.Year)
@@ -170,7 +170,7 @@ namespace NLC.Library.Extensions.NationalGovernment.eGIF
                             }
 
                         if (int.TryParse(m,
-                            out var im))
+                                out var im))
                             {
                                 if (im < 1 || im > 12)
                                     {
@@ -187,7 +187,7 @@ namespace NLC.Library.Extensions.NationalGovernment.eGIF
                         // MM in Range 01-12.
                         // DD in Range 01-31.
                         if (int.TryParse(d,
-                            out var id))
+                                out var id))
                             {
                                 if (id < 1 || id > 31)
                                     {
@@ -227,10 +227,8 @@ namespace NLC.Library.Extensions.NationalGovernment.eGIF
                                                 {
                                                     return id <= 29;
                                                 }
-                                            else
-                                                {
-                                                    return id <= 28;
-                                                }
+
+                                            return id <= 28;
                                     }
                             }
                         else
@@ -269,7 +267,7 @@ namespace NLC.Library.Extensions.NationalGovernment.eGIF
                         var month = nassNumber.Substring(2,
                             2);
                         if (int.TryParse(month,
-                            out var mnum))
+                                out var mnum))
                             {
                                 if (mnum > 12 || mnum < 1)
                                     {
@@ -357,7 +355,7 @@ namespace NLC.Library.Extensions.NationalGovernment.eGIF
                                     }
 
                                 switch (niNumber.Substring(0,
-                                    1))
+                                            1))
                                     {
                                         case "D":
                                         case "F":
@@ -370,7 +368,7 @@ namespace NLC.Library.Extensions.NationalGovernment.eGIF
                                     }
 
                                 switch (niNumber.Substring(1,
-                                    1))
+                                            1))
                                     {
                                         case "D":
                                         case "F":

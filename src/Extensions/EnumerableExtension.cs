@@ -5,8 +5,8 @@
 //  </copyright>
 //  <summary>
 // 
-//  Created - 13/10/2020 16:35
-//  Altered - 14/10/2020 11:39 - Stephen Ellwood
+//  Created - 17/03/2021 17:48
+//  Altered - 25/04/2022 12:15 - Stephen Ellwood
 // 
 //  Project : - NLC.Library
 // 
@@ -60,7 +60,7 @@ namespace NLC.Library.Extensions
                 /// </summary>
                 /// <typeparam name="T">The type of the list</typeparam>
                 /// <param name="input">The data to split</param>
-            /// <returns>Enumerable of pages</returns>
+                /// <returns>Enumerable of pages</returns>
                 /// <remarks>https://stackoverflow.com/questions/11463734/split-a-list-into-smaller-lists-of-n-size</remarks>
                 public static IEnumerable<List<T>> SplitToList<T>(this IEnumerable<T> input) =>
                     SplitToList(input, 1000);
