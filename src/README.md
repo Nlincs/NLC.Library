@@ -7,10 +7,11 @@
 <!-- ![.NET Core](https://github.com/NelNlc/Library/workflows/.NET%20Core/badge.svg) 
 [![Build Status](https://dev.azure.com/NLBC/Library/_apis/build/status/NelNlc.Library?branchName=master)](https://dev.azure.com/NLBC/Library/_build/latest?definitionId=3&branchName=master)
 [![Build Status](https://travis-ci.org/NelNlc/Library.svg?branch=master)](https://travis-ci.org/NelNlc/Library)
-[![Build status](https://ci.appveyor.com/api/projects/status/94xxq3hq0qek8qll?svg=true)](https://ci.appveyor.com/project/ellwoods/library)
-[![Known Vulnerabilities](https://snyk.io/test/github/Nlincs/Library/badge.svg?targetFile=src/Library.csproj)](https://snyk.io/test/github/Nlincs/Library?targetFile=src/Library.csproj) -->
+[![Build status](https://ci.appveyor.com/api/projects/status/94xxq3hq0qek8qll?svg=true)](https://ci.appveyor.com/project/ellwoods/library) -->
+[![Known Vulnerabilities](https://snyk.io/test/github/Nlincs/Library/badge.svg?targetFile=src/Library.csproj)](https://snyk.io/test/github/Nlincs/Library?targetFile=src/Library.csproj) 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/53beda2ce15e45c8b662363f2c1f1344)](https://www.codacy.com/gh/Nlincs/NLC.Library/dashboard?utm_source=github.com&utm_medium=referral&utm_content=Nlincs/NLC.Library&utm_campaign=Badge_Grade) 
+[![Build status](https://ci.appveyor.com/api/projects/status/g4lpa3ng5djpuwwe?svg=true)](https://ci.appveyor.com/project/ellwoods/ellwoodsnlclibrary)
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/53beda2ce15e45c8b662363f2c1f1344)](https://www.codacy.com/gh/Nlincs/NLC.Library/dashboard?utm_source=github.com&utm_medium=referral&utm_content=Nlincs/NLC.Library&utm_campaign=Badge_Grade)
 
 Library of extensions and models for netstandard 2.0 and .NET 6
 This is the latest c# incarnation of this library. Some of the functionality is now available in standard libraries and
