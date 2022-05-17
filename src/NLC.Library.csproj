@@ -89,7 +89,7 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="ServiceStack.Text" Version="6.0.2"/>
+        <PackageReference Include="ServiceStack.Text" Version="6.1.0"/>
     </ItemGroup>
 
 </Project>
